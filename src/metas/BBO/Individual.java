@@ -1,5 +1,6 @@
 package metas.BBO;
 
+
 public class Individual {
 	
 	Solution sol;
@@ -9,7 +10,7 @@ public class Individual {
 	int eval;
 	float dist;
 	
-	public Individual (Solution sol, int index, int eval)
+	public Individual(Solution sol, int index, int eval)
 	{
 		this.sol = sol;
 		this.cost = sol.fitness;
@@ -18,7 +19,7 @@ public class Individual {
 		this.dist = 0;
 	}
 	
-	public Individual (Solution sol, int index, float dist)
+	public Individual(Solution sol, int index, float dist)
 	{
 		this.sol = sol;
 		this.cost = sol.fitness;
@@ -30,7 +31,7 @@ public class Individual {
 	
 	public int compareTo(Object other) 
 	{ 
-	   	 float nombre1 = ((Individual) other).cost; 
+	   	 float nombre1 = ((Individual) other).cost;
 	   	 float nombre2 = this.cost; 
 	     if (nombre1 > nombre2)  return -1; 
 	     else if(nombre1 == nombre2) return 0; 

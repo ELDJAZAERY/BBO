@@ -1,27 +1,22 @@
-package data.reader;
-
-import data.representations.Edge;
-import data.representations.Graph;
-import data.representations.Vertex;
+package data.representations;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class GraphProblems {
+
 	private Queue<String> queue;
-	// private Stack<Integer> stack;
 
 	public GraphProblems() {
-		queue = new LinkedList<String>();
-		// stack = new Stack<Integer>();
+		queue = new LinkedList<>();
 	}
 
 	// Check the Connectivity of Graph Using BFS
 	public boolean Connectivity_BFS(Graph graph, LinkedList<Vertex> vertices) {
 
 		String source = vertices.get(0).getLabel();
-		HashMap<String, String> Visited = new HashMap<String, String>();
+		HashMap<String, String> Visited = new HashMap<>();
 
 		String element;
 		Visited.put(source, "");
@@ -51,12 +46,12 @@ public class GraphProblems {
 		LinkedList<Integer> dominating_set = new LinkedList<>();
 
 		int[] temp = new int[permutation.size()];
-		int compteur = 0, j = 0;
+		int computer = 0, j = 0;
 
-		while (j < permutation.size() && compteur != permutation.size()) {
+		while (j < permutation.size() && computer != permutation.size()) {
 			if (temp[permutation.get(j)] == 0) {
 				temp[permutation.get(j)] = 1;
-				compteur++;
+				computer++;
 			}
 
 			dominating_set.add(permutation.get(j));
@@ -66,7 +61,7 @@ public class GraphProblems {
 
 				if (temp[v] == 0) {
 					temp[v] = 1;
-					compteur++;
+					computer++;
 				}
 			}
 			j++;
@@ -75,8 +70,7 @@ public class GraphProblems {
 		return dominating_set;
 	}
 
-	public Graph graph(Graph graph, LinkedList<Vertex> verticesG, LinkedList<Vertex> vertices,
-			LinkedList<Integer> DominatingVertices) {
+	public Graph graph(Graph graph, LinkedList<Vertex> vertices,LinkedList<Integer> DominatingVertices) {
 		Graph Newgraph = new Graph();
 
 		for (int i = 0; i < DominatingVertices.size(); i++) {
@@ -95,8 +89,7 @@ public class GraphProblems {
 		return Newgraph;
 	}
 
-	public void AddToGraph(Graph graph, Graph Newgraph, LinkedList<Vertex> verticesG, LinkedList<Vertex> vertices,
-			LinkedList<Integer> DominatingVertices) {
+	public void AddToGraph(Graph graph, Graph Newgraph, LinkedList<Vertex> verticesG,LinkedList<Integer> DominatingVertices) {
 
 		int index = DominatingVertices.size() - 1;
 		verticesG.add(new Vertex("" + DominatingVertices.get(index)));

@@ -1,11 +1,10 @@
 package metas.BBO;
 
+import data.representations.GraphProblems;
 import data.representations.Graph;
-import data.reader.GraphProblems;
 import data.representations.Vertex;
 
 import java.util.LinkedList;
-
 import java.util.Random;
 
 public class Solution {
@@ -57,14 +56,14 @@ public class Solution {
 
 		Graph G = new Graph();
 		LinkedList<Vertex> B = new LinkedList<Vertex>();
-		G = undirectedConnectivity.graph(graph, vertices, B, solution);
+		G = undirectedConnectivity.graph(graph, B, solution);
 		
 		boolean stop = false;
 		while (!stop) {
 			if (undirectedConnectivity.Connectivity_BFS(G, B)) {
 				Prims_MST prims = new Prims_MST(B.size());
 				prims.primsAlgorithm(G, B);
-				fitness = prims.DominatingTree_(verticesDT, G, solution, tree, graph, vertices, permutation);
+				fitness = prims.DominatingTree_(verticesDT, G, solution, tree);
 				/** Binary representation **/
 //				for (int i = 0; i < solution.size(); i++) {
 //					SB[solution.get(i)] = 1;
@@ -73,7 +72,7 @@ public class Solution {
 			} else {
 				int index = solution.size();
 				solution.add(permutation.get(index));
-				undirectedConnectivity.AddToGraph(graph, G, B, vertices, solution);
+				undirectedConnectivity.AddToGraph(graph, G, B, solution);
 			}
 		}
 	}
@@ -87,7 +86,7 @@ public class Solution {
 
 		Graph G = new Graph();
 		LinkedList<Vertex> B = new LinkedList<Vertex>();
-		G = undirectedConnectivity.graph(graph, vertices, B, solution);
+		G = undirectedConnectivity.graph(graph, B, solution);
 
 		boolean stop = false;
 		while (!stop) {
@@ -104,7 +103,7 @@ public class Solution {
 					SolutionNew.add(Integer.parseInt(B2.get(i).getLabel()));
 				}
 				solution = new LinkedList<Integer>(SolutionNew);
-				fitness = prims2.DominatingTree_(verticesDT, G2, solution, tree, graph, vertices, permutation);
+				fitness = prims2.DominatingTree_(verticesDT, G2, solution, tree);
 
 				/** Binary representation **/
 				// for (int i = 0; i < solution.size(); i++) {
@@ -116,7 +115,7 @@ public class Solution {
 			} else {
 				int index = solution.size();
 				solution.add(permutation.get(index));
-				undirectedConnectivity.AddToGraph(graph, G, B, vertices, solution);
+				undirectedConnectivity.AddToGraph(graph, G, B, solution);
 			}
 
 		}

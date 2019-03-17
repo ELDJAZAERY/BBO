@@ -2,7 +2,6 @@ package metas.BBO;
 
 import data.representations.Graph;
 import data.representations.Vertex;
-
 import java.util.LinkedList;
 
 public class Best {

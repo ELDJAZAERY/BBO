@@ -1,18 +1,13 @@
 package metas.BBO;
 
+
 import data.representations.Graph;
 import data.representations.Vertex;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Hashtable;
 
 public class EBBO_DTP {
 

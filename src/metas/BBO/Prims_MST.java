@@ -76,12 +76,6 @@ public class Prims_MST {
 		}
 	}
 
-	public void printMST(LinkedList<Vertex> vertices) {
-		for (int vertex = 1; vertex < vertices.size(); vertex++) {
-			System.out
-					.print(vertices.get(parent[vertex]).getLabel() + "\t:\t" + vertices.get(vertex).getLabel() + "\n");
-		}
-	}
 
 	public float DominatingTree(LinkedList<Vertex> vertices, Graph graph, LinkedList<Integer> DominatingVertices,
 			Graph DT, Graph graphh, LinkedList<Vertex> verticess, LinkedList<Integer> permutation) {
@@ -153,8 +147,7 @@ public class Prims_MST {
 		return weight;
 	}
 
-	public float DominatingTree_(LinkedList<Vertex> vertices, Graph graph, LinkedList<Integer> DominatingVertices,
-			Graph DT, Graph graphh, LinkedList<Vertex> verticess, LinkedList<Integer> permutation) {
+	public float DominatingTree_(LinkedList<Vertex> vertices, Graph graph, LinkedList<Integer> DominatingVertices, Graph DT) {
 		float weight = 0;
 		for (int i = 0; i < DominatingVertices.size(); i++) {
 			vertices.add(new Vertex("" + DominatingVertices.get(i)));
@@ -168,5 +161,13 @@ public class Prims_MST {
 		}
 		return weight;
 	}
+
+	public void printMST(LinkedList<Vertex> vertices) {
+		for (int vertex = 1; vertex < vertices.size(); vertex++) {
+			System.out
+					.print(vertices.get(parent[vertex]).getLabel() + "\t:\t" + vertices.get(vertex).getLabel() + "\n");
+		}
+	}
+
 
 }
