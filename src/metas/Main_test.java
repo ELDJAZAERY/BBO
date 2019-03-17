@@ -3,7 +3,9 @@ package metas;
 import data.representations.Graph;
 import data.representations.Instances;
 import data.representations.Vertex;
-import metas.BBO.EBBO_DTP;
+
+import metas.BBO2.EBBO_DTP_2;
+
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -16,7 +18,7 @@ public class Main_test
 	public static void main(String[] args) throws IOException  {
 		
 		String range = "100";
-		String Node = "500";
+		String Node = "50";
 		int NbNodes = Integer.parseInt(Node);
 
 		String file = "1";
@@ -33,9 +35,10 @@ public class Main_test
 
 		System.out.println("Bismilah <3 Nouveau code");
 				
-		EBBO_DTP bbo = new EBBO_DTP(NbNodes);
+		EBBO_DTP_2 bbo = new EBBO_DTP_2(NbNodes);
+
 		bbo.BBO_S(vertices, graph);
-		
+		//bbo.testPerf(vertices,graph);
 	}
 
 	

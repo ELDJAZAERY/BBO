@@ -1,20 +1,15 @@
-package metas.BBO;
+package metas.BBO2;
+
 
 import data.representations.Graph;
 import data.representations.Vertex;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Hashtable;
 
-public class EBBO_DTP {
+public class EBBO_DTP_2 {
 
 	float Pmutate; // initial mutation probability
 	float I; // max immigration rate for each island
@@ -34,7 +29,7 @@ public class EBBO_DTP {
 	int nbev;
 	Hashtable<String, String> key;
 
-	public EBBO_DTP(int N) {
+	public EBBO_DTP_2(int N) {
 		Pmutate = (float) 0.005;
 		I = (float) 1;
 		E = (float) 1;

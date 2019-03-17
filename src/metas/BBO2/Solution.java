@@ -1,11 +1,10 @@
-package metas.BBO;
+package metas.BBO2;
 
-import data.representations.Graph;
 import data.reader.GraphProblems;
+import data.representations.Graph;
 import data.representations.Vertex;
 
 import java.util.LinkedList;
-
 import java.util.Random;
 
 public class Solution {
