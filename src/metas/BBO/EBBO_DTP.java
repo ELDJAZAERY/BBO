@@ -43,6 +43,7 @@ public class EBBO_DTP {
     Random rand;
     int nbEvals;
 
+    Best best;
 
 	public EBBO_DTP(Instances instances) {
 
@@ -82,13 +83,12 @@ public class EBBO_DTP {
 		Init_p_l_m_s();
 		Prob(false);
 
-		Best best = new Best();
-		best.cost = population.get(0).cost;
-		best.NbN = population.get(0).sol.verticesDT.size();
+		long startTime = System.currentTimeMillis();
 
-		long startTime = System.nanoTime();
-		// Begin the optimization loop
+        best = new Best();
+        best.update(population.get(0),0,startTime);
 
+        // Begin the optimization loop
 		for (int i = 0; i < MaxNbGenerations; i++) {
 
 
@@ -97,33 +97,18 @@ public class EBBO_DTP {
 			populationKeep.add(population.get(1));
 
 			for (int j = 0; j < popsize; j++) {
-				LinkedList<Integer> permutationTemp = (LinkedList<Integer>) population.get(j).sol.permutation.clone();
-
+				LinkedList<Integer> permutationTemp = new LinkedList<>(population.get(j).sol.permutation);
 				HashMap<Integer, String> permutationTemp_2 = new HashMap<>();
+
 				for (int n = 0; n < population.get(j).sol.permutation.size(); n++) {
 					permutationTemp_2.put(population.get(j).sol.permutation.get(n), String.valueOf(n));
 				}
 
+				// Random 0% --> 100%
 				r = (float) rand.nextInt(101) / 100;
 				if (r < lambda.get(j)) {
-					for (int l = 0; l < popsize && l != j; l++) {
-						r = (float) rand.nextInt(101) / 100;
-						if (r < mu.get(l)) {
-
-							r = (float) rand.nextInt(101) / 100;
-							int d = rand.nextInt(population.get(l).sol.verticesDT.size() - 1) + 0;
-
-							int tempNode = permutationTemp.get(d);
-							int NewNode = population.get(l).sol.permutation.get(d);
-							String pos = permutationTemp_2.get(NewNode);
-
-							permutationTemp.set(d, NewNode);
-							permutationTemp.set(Integer.parseInt(pos), tempNode);
-							permutationTemp_2.put(NewNode, String.valueOf(d));
-							permutationTemp_2.put(tempNode, pos);
-
-						}
-					}
+				    /** Permutations **/
+				    _Permutation(permutationTemp,permutationTemp_2,j);
 				}else{
 				    /** Mutations **/
                     _Mutation(permutationTemp,permutationTemp_2,j);
@@ -150,54 +135,24 @@ public class EBBO_DTP {
 			Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
 
 			if (best.cost > population.get(0).cost) {
-				best.cost = population.get(0).cost;
-				long endTime_best = System.nanoTime();
-				best.t = (endTime_best - startTime);
-				best.NbIt = i + 1;
-				best.div = 0;
-				best.I = population.get(0);
-				best.NbN = population.get(0).sol.verticesDT.size();
-				best.verticesDT = new LinkedList<>(population.get(0).sol.verticesDT);
-				best.tree = population.get(0).sol.tree;
-
-				System.out.println(
-						best.cost + "," + best.NbN + "," + best.t / 1000000000.0 + "," + best.NbIt + "," + nbEvals);
-
+                best.update(population.get(0),i,startTime);
+                best.display();
 			} else {
 				best.div++;
 			}
 
 			if (best.div >= 25) {
-				System.out.println("Jumping Out");
-				for (int k = 0; k < popsize; k++) {
-					Solution individual = new Solution(L, NbNodes);
-					Collections.shuffle(individual.permutation);
-					individual.DT(graph, vertices);
-					Individual I = new Individual(individual, k, population.get(k).eval);
-					population.set(k, I);
-				}
-				best.div = 0;
-
-				// Replace the worst with the previous generation's ELITES.
-				population.set(popsize - 3, populationKeep.get(0));
-				population.set(popsize - 4, populationKeep.get(1));
-				population.set(popsize - 5, best.I);
-
-				// Rank habitats
-				// -----------------------------------------------;
-				Collections.sort(population,(r1,r2) -> r1.compareTo(r2));
+			    /** Diversification **/
+			    _Diversity(populationKeep);
 			}
 
 			Update_l_m_s_();
 			Prob(true);
 		}
 
-		System.out
-				.println(best.cost + "," + best.NbN + "," + best.t / 1000000000.0 + "," + best.NbIt + "   |   " + nbEvals);
-		System.out.println("---------------------------------------------");
-
+        best.display();
+        System.out.println(" --------- BBO FIN ----------");
 	}
-
 
 
 	public void Init_p_l_m_s() {
@@ -268,6 +223,28 @@ public class EBBO_DTP {
 
 
 
+    private void _Permutation(LinkedList<Integer> permutationTemp ,HashMap<Integer, String> permutationTemp_2 , int j){
+        for (int l = 0; l < popsize && l != j; l++) {
+            r = (float) rand.nextInt(101) / 100;
+            if (r < mu.get(l)) {
+
+                r = (float) rand.nextInt(101) / 100;
+                int d = rand.nextInt(population.get(l).sol.verticesDT.size() - 1) + 0;
+
+                int tempNode = permutationTemp.get(d);
+                int NewNode = population.get(l).sol.permutation.get(d);
+                String pos = permutationTemp_2.get(NewNode);
+
+                permutationTemp.set(d, NewNode);
+                permutationTemp.set(Integer.parseInt(pos), tempNode);
+                permutationTemp_2.put(NewNode, String.valueOf(d));
+                permutationTemp_2.put(tempNode, pos);
+
+            }
+        }
+    }
+
+
     private void _Mutation(LinkedList<Integer> permutationTemp ,HashMap<Integer, String> permutationTemp_2 , int j){
         // Mutation
         float mi;
@@ -296,6 +273,28 @@ public class EBBO_DTP {
 
         }
     }
+
+
+    private void _Diversity(LinkedList<Individual> populationKeep){
+        System.out.println("Jumping Out");
+        for (int k = 0; k < popsize; k++) {
+            Solution individual = new Solution(L, NbNodes);
+            Collections.shuffle(individual.permutation);
+            individual.DT(graph, vertices);
+            Individual I = new Individual(individual, k, population.get(k).eval);
+            population.set(k, I);
+        }
+        best.div = 0;
+
+        // Replace the worst with the previous generation's ELITES.
+        population.set(popsize - 3, populationKeep.get(0));
+        population.set(popsize - 4, populationKeep.get(1));
+        population.set(popsize - 5, best.I);
+
+        // Rank habitats
+        Collections.sort(population,(r1,r2) -> r1.compareTo(r2));
+    }
+
 
     /** Local Search Multi Thread **/
     private void _LocalSearch(){

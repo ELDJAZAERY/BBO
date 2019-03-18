@@ -27,4 +27,32 @@ public class Best {
 		clones = 0;
 		nbev = 0;		
 	}
+
+	public void update(Individual newBest , int i , long startTime ){
+		cost = newBest.cost;
+		long endTime_best = System.currentTimeMillis();
+		t = (endTime_best - startTime) / 1000;
+		NbIt = i + 1;
+		div = 0;
+		I = newBest;
+		NbN = newBest.sol.verticesDT.size();
+		verticesDT = new LinkedList<>(newBest.sol.verticesDT);
+		tree = newBest.sol.tree;
+	}
+
+    public void display(){
+	    System.out.println(this.toString());
+    }
+
+	@Override
+	public String toString() {
+		String out = "";
+		out += "Best {";
+		out += "\n\t Fitness : " + cost;
+        out += "\n\t Nodes   : " + NbN;
+        out += "\n\t Iters   : " + NbIt;
+		out += "\n\t Secs    : " + t;
+		out += "\n}";
+		return out;
+	}
 }

@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/eldja.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/eldja.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/EBBO_DTP.class" afterPath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/EBBO_DTP.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/Main_test.class" afterPath="$PROJECT_DIR$/out/production/promo - version/metas/Main_test.class" />
-      <change beforePath="$PROJECT_DIR$/src/data/reader/Instances.java" afterPath="$PROJECT_DIR$/src/data/reader/Instances.java" />
+      <change beforePath="$PROJECT_DIR$/src/metas/BBO/Best.java" afterPath="$PROJECT_DIR$/src/metas/BBO/Best.java" />
       <change beforePath="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" afterPath="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" />
       <change beforePath="$PROJECT_DIR$/src/metas/Main_test.java" afterPath="$PROJECT_DIR$/src/metas/Main_test.java" />
     </list>
@@ -69,39 +66,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main_test.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main_test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EBBO_DTP.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-                <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-                <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-                <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metas/BBO/Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="160">
+              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/metas/Best.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP_IM.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/EBBO_LS_DTP.java" />
-        <option value="$PROJECT_DIR$/src/metas/BBO/Best.java" />
         <option value="$PROJECT_DIR$/src/dtp_2/EBBO_LS_DTP.java" />
         <option value="$PROJECT_DIR$/src/dtp_2/Solution.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/Main_test.java" />
@@ -169,8 +137,9 @@
         <option value="$PROJECT_DIR$/src/metas/BBO/Solution.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/Prims_MST.java" />
         <option value="$PROJECT_DIR$/src/data/reader/Instances.java" />
-        <option value="$PROJECT_DIR$/src/metas/Main_test.java" />
+        <option value="$PROJECT_DIR$/src/metas/BBO/Best.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" />
+        <option value="$PROJECT_DIR$/src/metas/Main_test.java" />
       </list>
     </option>
   </component>
@@ -220,30 +189,6 @@
             <path>
               <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
               <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="reader" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="metas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -469,16 +414,15 @@
       <workItem from="1552250087056" duration="1713000" />
       <workItem from="1552771789904" duration="3258000" />
       <workItem from="1552849660611" duration="5503000" />
-      <workItem from="1552932724649" duration="7950000" />
+      <workItem from="1552932724649" duration="11809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20520000" />
+    <option name="totallyTimeSpent" value="24379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1044" height="788" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -551,10 +495,15 @@
           <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
+            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -610,10 +559,15 @@
           <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
+            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -631,10 +585,15 @@
           <caret line="438" column="0" lean-forward="false" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
+            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -742,6 +701,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -801,35 +761,16 @@
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
+            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/representations/GraphProblems.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="72" column="104" lean-forward="false" selection-start-line="72" selection-start-column="104" selection-end-line="72" selection-end-column="104" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#196#197#0" expanded="false" />
-            <element signature="e#229#230#0" expanded="false" />
-            <element signature="method#Connectivity_BFS#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#DominatingSet#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#graph#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#AddToGraph#0;class#GraphProblems#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/BBO/Best.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,24 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/reader/Instances.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/BBO/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -886,16 +809,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/metas/BBO/Best.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="54" column="19" lean-forward="true" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding>
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552941526025" expanded="false" signature="9380:10248" ph="{...}" />
+            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/representations/GraphProblems.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="method#Connectivity_BFS#0;class#GraphProblems#0" expanded="false" />
+            <element signature="method#DominatingSet#0;class#GraphProblems#0" expanded="false" />
+            <element signature="method#graph#0;class#GraphProblems#0" expanded="false" />
+            <element signature="method#AddToGraph#0;class#GraphProblems#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/reader/Instances.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

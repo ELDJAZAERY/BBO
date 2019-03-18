@@ -12,9 +12,9 @@ public class Main_test {
 
 	public static void main(String[] args) {
 		
-		String range = "100";
+		String range = "150";
 		String Node = "50";
-        String file = "1";
+        String file = "2";
 
 		int NbNodes = Integer.parseInt(Node);
 
@@ -30,7 +30,6 @@ public class Main_test {
 		EBBO_DTP bbo = new EBBO_DTP(instances);
 
 		bbo.BBO_S();
-		//bbo.testPerf(vertices,graph);
 	}
 
 	
