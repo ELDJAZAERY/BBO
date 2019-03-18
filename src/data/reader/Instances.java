@@ -9,12 +9,16 @@ import java.util.LinkedList;
 public class Instances {
 
 	private BufferedReader br;
-	
-	public Instances(Graph graph, LinkedList<Vertex> vertices, int size, String range, String file, String node)  {
+
+	public Graph graph;
+	public LinkedList<Vertex> vertices;
+    public int NbNodes;
+
+	public Instances(Graph graph, LinkedList<Vertex> vertices, int NbNodes, String range, String file, String node)  {
 	    try {
 
 			//initialize some vertices and add them to the graph
-			for(int i = 0; i < size; i++)
+			for(int i = 0; i < NbNodes; i++)
 			{
 				vertices.add(new Vertex("" + i));
 
@@ -36,6 +40,10 @@ public class Instances {
 			}
 		}catch (Exception e){
 			e.printStackTrace();
+		}finally {
+	    	this.graph    = graph;
+	    	this.vertices = vertices;
+	    	this.NbNodes  = NbNodes;
 		}
 
 	}

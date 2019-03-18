@@ -22,14 +22,14 @@ public class Main_test {
 		LinkedList<Vertex> vertices = new LinkedList<>();
 		
 		Graph graph = new Graph();
-        Instances e2 = new Instances(graph, vertices,NbNodes, range, file, Node);
+        Instances instances = new Instances(graph, vertices,NbNodes, range, file, Node);
 
 
 		System.out.println("Bismilah <3 Nouveau code");
 				
-		EBBO_DTP bbo = new EBBO_DTP(NbNodes);
+		EBBO_DTP bbo = new EBBO_DTP(instances);
 
-		bbo.BBO_S(vertices, graph);
+		bbo.BBO_S();
 		//bbo.testPerf(vertices,graph);
 	}
 
