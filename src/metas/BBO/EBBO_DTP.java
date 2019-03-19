@@ -12,38 +12,35 @@ import java.util.concurrent.Executors;
 
 public class EBBO_DTP {
 
-    int NbNodes;
-    int MaxNbGenerations; // max number of generation
-    LinkedList<Float> distances;
-    Hashtable<String, String> key;
+    private int NbNodes;
+    private int MaxNbGenerations; // max number of generation
 
-    int P; // max species count, for each island
-    int popsize; // max species count, for each island
-    LinkedList<Individual> population; // the species count probability of each
+    private int P; // max species count, for each island
+    private int populationSize; // max species count, for each island
+    private LinkedList<Individual> population; // the species count probability of each
 
-
-    float E; // max emigration rate, for each island
-    LinkedList<Float> mu; // extinction (emigration) rate
+    private float E; // max emigration rate, for each island
+    private LinkedList<Float> mu; // extinction (emigration) rate
 
 
-    float I; // max immigration rate for each island
-	LinkedList<Float> lambda; // immigration rate
+    private float I; // max immigration rate for each island
+    private LinkedList<Float> lambda; // immigration rate
 
 
-    float PMutate; // initial mutation probability
-    LinkedList<Float> prob; // the species count probability of each habitat
+    private float PMutate; // initial mutation probability
+    private LinkedList<Float> prob; // the species count probability of each habitat
 
 
-    Graph graph;
-    LinkedList<Vertex> vertices;
-    LinkedList<Integer> L;
+    private Graph graph;
+    private LinkedList<Vertex> vertices;
+    private LinkedList<Integer> L;
 
 
-	float r;
-    Random rand;
-    int nbEvals;
+    private float r;
+    private Random rand;
+    private int nbEvals;
 
-    Best best;
+    private Best best;
 
 	public EBBO_DTP(Instances instances) {
 
@@ -57,8 +54,6 @@ public class EBBO_DTP {
         }
 
         population = new LinkedList<>();
-        distances = new LinkedList<>();
-        key = new Hashtable<>();
 
         prob = new LinkedList<>();
         lambda = new LinkedList<>();
@@ -67,9 +62,9 @@ public class EBBO_DTP {
         rand = new Random();
 
         MaxNbGenerations = 300;
-        popsize = 20;
+        populationSize = 20;
 
-        P = popsize;
+        P = populationSize;
 		PMutate = (float) 0.005;
 		I = (float) 1;
 		E = (float) 1;
@@ -80,42 +75,43 @@ public class EBBO_DTP {
 
 	public void BBO_S() {
 
-		Init_p_l_m_s();
-		Prob(false);
+	    // Start Time
+        long startTime = System.currentTimeMillis();
 
-		long startTime = System.currentTimeMillis();
+	    // initialize the population
+		InitializePopulation();
 
         best = new Best();
-        best.update(population.get(0),0,startTime);
+        best.update(population.get(0),0,0);
 
-        // Begin the optimization loop
+        /**\// ## Updating Population Loop ## \//**/
 		for (int i = 0; i < MaxNbGenerations; i++) {
+		    
+			LinkedList<Individual> elitism = new LinkedList<>();
+			elitism.add(population.get(0));
+			elitism.add(population.get(1));
+			
 
-
-			LinkedList<Individual> populationKeep = new LinkedList<>();
-			populationKeep.add(population.get(0));
-			populationKeep.add(population.get(1));
-
-			for (int j = 0; j < popsize; j++) {
-				LinkedList<Integer> permutationTemp = new LinkedList<>(population.get(j).sol.permutation);
-				HashMap<Integer, String> permutationTemp_2 = new HashMap<>();
+			for (int j = 0; j < populationSize; j++) {
+				LinkedList<Integer> solutionTemp = new LinkedList<>(population.get(j).sol.permutation);
+				HashMap<Integer, String> assigned = new HashMap<>();
 
 				for (int n = 0; n < population.get(j).sol.permutation.size(); n++) {
-					permutationTemp_2.put(population.get(j).sol.permutation.get(n), String.valueOf(n));
+					assigned.put(population.get(j).sol.permutation.get(n), String.valueOf(n));
 				}
 
 				// Random 0% --> 100%
 				r = (float) rand.nextInt(101) / 100;
 				if (r < lambda.get(j)) {
 				    /** Permutations **/
-				    _Permutation(permutationTemp,permutationTemp_2,j);
+				    _Permutation(solutionTemp,assigned,j);
 				}else{
 				    /** Mutations **/
-                    _Mutation(permutationTemp,permutationTemp_2,j);
+                    _Mutation(solutionTemp,assigned,j);
                 }
 
 				nbEvals++;
-				Solution individual = new Solution(permutationTemp, NbNodes);
+				Solution individual = new Solution(solutionTemp, NbNodes);
 				individual.DT_P(graph, vertices);
 				Individual I = new Individual(individual, j, nbEvals);
 				population.set(j, I);
@@ -124,14 +120,14 @@ public class EBBO_DTP {
 			/** Local Search Multi Thread **/
             _LocalSearch();
 
-			// Rank habitats -----------------------------------------------;
-			Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
 
-			// Replace the worst with the previous generation's ELITES.
-			population.set(popsize - 3, populationKeep.get(0));
-			population.set(popsize - 4, populationKeep.get(1));
+            /** Elitism with the worst **/
+            Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
+			population.set(populationSize - 1, elitism.get(0));
+			population.set(populationSize - 2, elitism.get(1));
 
-			// Rank habitats -----------------------------------------------;
+
+            /** evaluate Population **/
 			Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
 
 			if (best.cost > population.get(0).cost) {
@@ -143,11 +139,10 @@ public class EBBO_DTP {
 
 			if (best.div >= 25) {
 			    /** Diversification **/
-			    _Diversity(populationKeep);
+			    _Diversity(elitism);
 			}
 
-			Update_l_m_s_();
-			Prob(true);
+			UpdatePopulations();
 		}
 
         best.display();
@@ -155,15 +150,14 @@ public class EBBO_DTP {
 	}
 
 
-	public void Init_p_l_m_s() {
+	public void InitializePopulation() {
 
-		for (int i = 0; i < popsize; i++) {
+		for (int i = 0; i < populationSize; i++) {
 			Solution individual = new Solution(L, NbNodes);
 			Collections.shuffle(individual.permutation);
 			individual.DT(graph, vertices);
 			Individual In = new Individual(individual, i, 0);
 			population.add(In);
-			distances.add((float) 0);
 			nbEvals++;
 
 			population.get(i).SpeciesCount = P - i;
@@ -172,10 +166,12 @@ public class EBBO_DTP {
 			// mu(i) is the emigration rate for habitat i
 			mu.add( E * population.get(i).SpeciesCount / P);
 		}
+
+        updateProb();
 	}
 
 
-	public void Update_l_m_s_() {
+	public void UpdatePopulations() {
 		for (int i = 0; i < population.size(); i++) {
 			population.get(i).SpeciesCount = P - i;
 			// lambda(i) is the immigration rate for habitat i
@@ -183,69 +179,53 @@ public class EBBO_DTP {
 			// mu(i) is the emigration rate for habitat i
 			mu.set(i, E * population.get(i).SpeciesCount / P);
 		}
+        updateProb();
 	}
 
 
-    public void Prob(Boolean set) {
+    public void updateProb() {
+
+	    prob.clear();
+
         float sommeLT = 0;
         float sommeMT = 0;
         float sommeT ;
 
-        for (int k = 0; k < popsize; k++) {
+        for (int k = 0; k < populationSize; k++) {
             sommeLT = sommeLT + lambda.get(k);
             sommeMT = sommeMT + mu.get(k);
         }
-
         sommeT = sommeLT / sommeMT;
-        for (int k = 0; k < popsize; k++) {
-            if (k == 0) {
-                if(set)
-                    prob.add(1,(float) 1 / (1 + sommeT));
-                else
-                    prob.add((float) 1 / (1 + sommeT));
-            }
 
-            else {
-                float sommeL = 0;
-                float sommeM = 0;
-                for (int i = 0; i < k; i++) {
-                    sommeL = sommeL + lambda.get(i);
-                    sommeM = sommeM + mu.get(i);
-                }
-
-                if(set)
-                    prob.add(1,(float) 1 / (1 + sommeT));
-                else
-                    prob.add((float) 1 / (1 + sommeT));
-            }
+        for (int k = 0; k < populationSize; k++) {
+            prob.add((float) 1 / (1 + sommeT));
         }
     }
 
 
 
-    private void _Permutation(LinkedList<Integer> permutationTemp ,HashMap<Integer, String> permutationTemp_2 , int j){
-        for (int l = 0; l < popsize && l != j; l++) {
+    private void _Permutation(LinkedList<Integer> solutionTemp ,HashMap<Integer, String> assigned , int j){
+        for (int l = 0; l < populationSize && l != j; l++) {
             r = (float) rand.nextInt(101) / 100;
             if (r < mu.get(l)) {
 
                 r = (float) rand.nextInt(101) / 100;
                 int d = rand.nextInt(population.get(l).sol.verticesDT.size() - 1) + 0;
 
-                int tempNode = permutationTemp.get(d);
+                int tempNode = solutionTemp.get(d);
                 int NewNode = population.get(l).sol.permutation.get(d);
-                String pos = permutationTemp_2.get(NewNode);
+                String pos = assigned.get(NewNode);
 
-                permutationTemp.set(d, NewNode);
-                permutationTemp.set(Integer.parseInt(pos), tempNode);
-                permutationTemp_2.put(NewNode, String.valueOf(d));
-                permutationTemp_2.put(tempNode, pos);
-
+                solutionTemp.set(d, NewNode);
+                solutionTemp.set(Integer.parseInt(pos), tempNode);
+                assigned.put(NewNode, String.valueOf(d));
+                assigned.put(tempNode, pos);
             }
         }
     }
 
 
-    private void _Mutation(LinkedList<Integer> permutationTemp ,HashMap<Integer, String> permutationTemp_2 , int j){
+    private void _Mutation(LinkedList<Integer> solutionTemp ,HashMap<Integer, String> assigned , int j){
         // Mutation
         float mi;
         mi = PMutate * ( (1 - (prob.get(j))) / Collections.max(prob));
@@ -258,26 +238,25 @@ public class EBBO_DTP {
                 boolean stop = false;
                 while (!stop) {
                     n = rand.nextInt(NbNodes - 1) + 0;
-                    if (n != permutationTemp.get(permutationTemp.get(d)))
+                    if (n != solutionTemp.get(solutionTemp.get(d)))
                         stop = true;
                 }
 
-                int tempNode = permutationTemp.get(d);
-                String pos = permutationTemp_2.get(n);
-                permutationTemp.set(d, n);
-                permutationTemp.set(Integer.parseInt(pos), tempNode);
-                permutationTemp_2.put(n, String.valueOf(d));
-                permutationTemp_2.put(tempNode, pos);
-
+                int tempNode = solutionTemp.get(d);
+                String pos   = assigned.get(n);
+                solutionTemp.set(d, n);
+                solutionTemp.set(Integer.parseInt(pos), tempNode);
+                assigned.put(n, String.valueOf(d));
+                assigned.put(tempNode, pos);
             }
-
         }
+
     }
 
 
-    private void _Diversity(LinkedList<Individual> populationKeep){
+    private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
-        for (int k = 0; k < popsize; k++) {
+        for (int k = 0; k < populationSize; k++) {
             Solution individual = new Solution(L, NbNodes);
             Collections.shuffle(individual.permutation);
             individual.DT(graph, vertices);
@@ -287,9 +266,9 @@ public class EBBO_DTP {
         best.div = 0;
 
         // Replace the worst with the previous generation's ELITES.
-        population.set(popsize - 3, populationKeep.get(0));
-        population.set(popsize - 4, populationKeep.get(1));
-        population.set(popsize - 5, best.I);
+        population.set(populationSize - 1, elitism.get(0));
+        population.set(populationSize - 2, elitism.get(1));
+        population.set(populationSize - 3, best.I);
 
         // Rank habitats
         Collections.sort(population,(r1,r2) -> r1.compareTo(r2));
@@ -300,7 +279,7 @@ public class EBBO_DTP {
     private void _LocalSearch(){
         /** <Local Search> **/
         ArrayList<Callable<Void>> taskList = new ArrayList<>();
-        for (int j = 0; j < popsize; j++) {
+        for (int j = 0; j < populationSize; j++) {
             final int th = j;
             Callable<Void> callable = () -> {
                 _VNS_Function_I(th);
@@ -309,7 +288,7 @@ public class EBBO_DTP {
             taskList.add(callable);
         }
 
-        ExecutorService executor = Executors.newFixedThreadPool(popsize);
+        ExecutorService executor = Executors.newFixedThreadPool(populationSize);
         try {
             executor.invokeAll(taskList);
         } catch (InterruptedException ie) {

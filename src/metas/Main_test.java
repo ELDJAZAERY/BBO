@@ -12,9 +12,9 @@ public class Main_test {
 
 	public static void main(String[] args) {
 		
-		String range = "150";
-		String Node = "50";
-        String file = "2";
+		String range = "100";
+		String Node = "500";
+        String file = "1";
 
 		int NbNodes = Integer.parseInt(Node);
 

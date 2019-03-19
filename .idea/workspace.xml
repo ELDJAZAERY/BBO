@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/metas/BBO/Best.java" afterPath="$PROJECT_DIR$/src/metas/BBO/Best.java" />
       <change beforePath="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" afterPath="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" />
       <change beforePath="$PROJECT_DIR$/src/metas/Main_test.java" afterPath="$PROJECT_DIR$/src/metas/Main_test.java" />
     </list>
@@ -22,6 +20,20 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DebuggerManager">
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
@@ -65,20 +77,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main_test.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -87,6 +86,10 @@
       <find>best</find>
       <find>vertices</find>
       <find>L</find>
+      <find>Prob</find>
+      <find>prob</find>
+      <find>elitism</find>
+      <find>permutationTemp_2</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -138,8 +141,8 @@
         <option value="$PROJECT_DIR$/src/metas/BBO/Prims_MST.java" />
         <option value="$PROJECT_DIR$/src/data/reader/Instances.java" />
         <option value="$PROJECT_DIR$/src/metas/BBO/Best.java" />
-        <option value="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" />
         <option value="$PROJECT_DIR$/src/metas/Main_test.java" />
+        <option value="$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java" />
       </list>
     </option>
   </component>
@@ -156,7 +159,7 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1044" />
@@ -181,7 +184,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -194,8 +198,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,14 +418,15 @@
       <workItem from="1552771789904" duration="3258000" />
       <workItem from="1552849660611" duration="5503000" />
       <workItem from="1552932724649" duration="11809000" />
+      <workItem from="1553023318716" duration="9630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24379000" />
+    <option name="totallyTimeSpent" value="34009000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1044" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -431,19 +435,19 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45788667" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4909688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18699187" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2622449" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -461,6 +465,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -470,7 +500,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -479,6 +509,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -494,16 +534,11 @@
         <state relative-caret-position="242">
           <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#updateProb#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
+            <element signature="method#_VNS_Function_I#0;class#EBBO_DTP#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -558,16 +593,11 @@
         <state relative-caret-position="5104">
           <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#updateProb#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
+            <element signature="method#_VNS_Function_I#0;class#EBBO_DTP#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,16 +614,11 @@
         <state relative-caret-position="9636">
           <caret line="438" column="0" lean-forward="false" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#updateProb#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
+            <element signature="method#_VNS_Function_I#0;class#EBBO_DTP#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -693,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -701,7 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -750,7 +772,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
+          <folding>
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -760,16 +785,11 @@
         <state relative-caret-position="-17">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#updateProb#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
+            <element signature="method#_VNS_Function_I#0;class#EBBO_DTP#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -820,35 +840,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Init_p_l_m_s#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Update_l_m_s_#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#Prob#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
-            <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
-            <marker date="1552944784388" expanded="false" signature="9351:10219" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/representations/GraphProblems.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="method#Connectivity_BFS#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#DominatingSet#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#graph#0;class#GraphProblems#0" expanded="false" />
-            <element signature="method#AddToGraph#0;class#GraphProblems#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -860,10 +855,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/promo - version/metas/BBO/EBBO_DTP.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#11263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/metas/BBO/EBBO_DTP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="method#EBBO_DTP#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#updateProb#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_Diversity#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_LocalSearch#0;class#EBBO_DTP#0" expanded="false" />
+            <element signature="method#_VNS_Function_I#0;class#EBBO_DTP#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/Main_test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="426">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
