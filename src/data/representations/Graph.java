@@ -17,29 +17,31 @@ public class Graph
     HashMap<Integer, Edge> edges;
     
     
-    public Graph()
-    {
-        this.vertices = new HashMap<String, Vertex>();
-        this.edges = new HashMap<Integer, Edge>();
+    public Graph() {
+        this.vertices = new HashMap<>();
+        this.edges = new HashMap<>();
     }
-    
+
     /**
      * This constructor accepts an ArrayList<Vertex> and populates this.vertices. 
      * If multiple Vertex objects have the same label, then the last Vertex with the given label is used. 
     **/ 
     
     //@param vertices The initial Vertices to populate this Graph
-    public Graph(ArrayList<Vertex> vertices)
-    {
-        this.vertices = new HashMap<String, Vertex>();
-        this.edges = new HashMap<Integer, Edge>();
+    public Graph(ArrayList<Vertex> vertices) {
+        this.vertices = new HashMap<>();
+        this.edges = new HashMap<>();
         
         for(Vertex v: vertices)
         {
             this.vertices.put(v.getLabel(), v);
         }
     }
-    
+
+    public int size(){
+        return vertices.size();
+    }
+
     /**
      * This method adds am edge between Vertices one and two
      * of weight 1, if no Edge between these Vertices already

@@ -9,13 +9,13 @@ import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class EBBO_DTP {
+public class BBO {
 
     private int NbNodes;
     private int MaxNbGenerations; // max number of generation
 
-    private int P; // max species count, for each island
     private int populationSize; // max species count, for each island
     private LinkedList<Individual> population; // the species count probability of each
 
@@ -36,13 +36,16 @@ public class EBBO_DTP {
     private LinkedList<Integer> L;
 
 
-    private float r;
-    private Random rand;
     private int nbEvals;
 
     private Best best;
 
-	public EBBO_DTP(Instances instances) {
+    private int random(int range){
+        range = (range == 0) ? 1 : range;
+        return ThreadLocalRandom.current().nextInt(0,range);
+    }
+
+	public BBO(Instances instances) {
 
 	    graph = instances.graph;
         vertices = instances.vertices;
@@ -59,21 +62,18 @@ public class EBBO_DTP {
         lambda = new LinkedList<>();
         mu = new LinkedList<>();
 
-        rand = new Random();
-
         MaxNbGenerations = 300;
         populationSize = 20;
 
-        P = populationSize;
+        populationSize = populationSize;
 		PMutate = (float) 0.005;
 		I = (float) 1;
 		E = (float) 1;
 		nbEvals = 0;
-
     }
 
 
-	public void BBO_S() {
+	public void BBO_Exec() {
 
 	    // Start Time
         long startTime = System.currentTimeMillis();
@@ -83,6 +83,7 @@ public class EBBO_DTP {
 
         best = new Best();
         best.update(population.get(0),0,0);
+        best.display();
 
         /**\// ## Updating Population Loop ## \//**/
 		for (int i = 0; i < MaxNbGenerations; i++) {
@@ -93,25 +94,25 @@ public class EBBO_DTP {
 			
 
 			for (int j = 0; j < populationSize; j++) {
-				LinkedList<Integer> solutionTemp = new LinkedList<>(population.get(j).sol.permutation);
-				HashMap<Integer, String> assigned = new HashMap<>();
 
-				for (int n = 0; n < population.get(j).sol.permutation.size(); n++) {
-					assigned.put(population.get(j).sol.permutation.get(n), String.valueOf(n));
+				LinkedList<Integer> currentSolutions = new LinkedList<>(population.get(j).sol.permutation);
+				HashMap<Integer, String> permutations = new HashMap<>();
+
+				for (int n = 0; n < currentSolutions.size(); n++) {
+					permutations.put(currentSolutions.get(n), String.valueOf(n));
 				}
 
 				// Random 0% --> 100%
-				r = (float) rand.nextInt(101) / 100;
-				if (r < lambda.get(j)) {
+				if (random(100) < lambda.get(j)) {
 				    /** Permutations **/
-				    _Permutation(solutionTemp,assigned,j);
+				    _Permutation(currentSolutions,permutations,j);
 				}else{
 				    /** Mutations **/
-                    _Mutation(solutionTemp,assigned,j);
+                    _Mutation(currentSolutions,permutations,j);
                 }
 
 				nbEvals++;
-				Solution individual = new Solution(solutionTemp, NbNodes);
+				Solution individual = new Solution(currentSolutions, NbNodes);
 				individual.DT_P(graph, vertices);
 				Individual I = new Individual(individual, j, nbEvals);
 				population.set(j, I);
@@ -160,11 +161,11 @@ public class EBBO_DTP {
 			population.add(In);
 			nbEvals++;
 
-			population.get(i).SpeciesCount = P - i;
+			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.add(I * (1 - (population.get(i).SpeciesCount / P)));
+			lambda.add(I * (1 - (population.get(i).SpeciesCount / populationSize)));
 			// mu(i) is the emigration rate for habitat i
-			mu.add( E * population.get(i).SpeciesCount / P);
+			mu.add( E * population.get(i).SpeciesCount / populationSize);
 		}
 
         updateProb();
@@ -173,11 +174,11 @@ public class EBBO_DTP {
 
 	public void UpdatePopulations() {
 		for (int i = 0; i < population.size(); i++) {
-			population.get(i).SpeciesCount = P - i;
+			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.set(i, I * (1 - (population.get(i).SpeciesCount / P)));
+			lambda.set(i, I * (1 - (population.get(i).SpeciesCount / populationSize)));
 			// mu(i) is the emigration rate for habitat i
-			mu.set(i, E * population.get(i).SpeciesCount / P);
+			mu.set(i, E * population.get(i).SpeciesCount / populationSize);
 		}
         updateProb();
 	}
@@ -204,50 +205,44 @@ public class EBBO_DTP {
 
 
 
-    private void _Permutation(LinkedList<Integer> solutionTemp ,HashMap<Integer, String> assigned , int j){
+    private void _Permutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){
         for (int l = 0; l < populationSize && l != j; l++) {
-            r = (float) rand.nextInt(101) / 100;
-            if (r < mu.get(l)) {
 
-                r = (float) rand.nextInt(101) / 100;
-                int d = rand.nextInt(population.get(l).sol.verticesDT.size() - 1) + 0;
+            if (random(100) < mu.get(l)) {
 
-                int tempNode = solutionTemp.get(d);
-                int NewNode = population.get(l).sol.permutation.get(d);
-                String pos = assigned.get(NewNode);
+                int rand = random(population.get(l).sol.verticesDT.size() - 1 );
 
-                solutionTemp.set(d, NewNode);
-                solutionTemp.set(Integer.parseInt(pos), tempNode);
-                assigned.put(NewNode, String.valueOf(d));
-                assigned.put(tempNode, pos);
+                int tempNode = currentSolutions.get(rand);
+                int NewNode = population.get(l).sol.permutation.get(rand);
+                String pos = permutations.get(NewNode);
+
+                currentSolutions.set(rand, NewNode);
+                currentSolutions.set(Integer.parseInt(pos), tempNode);
+                permutations.put(NewNode, String.valueOf(rand));
+                permutations.put(tempNode, pos);
             }
         }
     }
 
 
-    private void _Mutation(LinkedList<Integer> solutionTemp ,HashMap<Integer, String> assigned , int j){
+    private void _Mutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){
         // Mutation
         float mi;
         mi = PMutate * ( (1 - (prob.get(j))) / Collections.max(prob));
-        for (int d = 0; d < NbNodes; d++) {
+        for (int i = 0; i < NbNodes; i++) {
 
-            r = (float) rand.nextInt(101) / 100;
-            int n = 0;
-            if (r < mi) {
+            if (random(100) < mi) {
 
-                boolean stop = false;
-                while (!stop) {
-                    n = rand.nextInt(NbNodes - 1) + 0;
-                    if (n != solutionTemp.get(solutionTemp.get(d)))
-                        stop = true;
-                }
+                int rand;
+                while((rand = random(NbNodes - 1)) ==
+                        currentSolutions.get(currentSolutions.get(i)));
 
-                int tempNode = solutionTemp.get(d);
-                String pos   = assigned.get(n);
-                solutionTemp.set(d, n);
-                solutionTemp.set(Integer.parseInt(pos), tempNode);
-                assigned.put(n, String.valueOf(d));
-                assigned.put(tempNode, pos);
+                int tempNode = currentSolutions.get(i);
+                String pos   = permutations.get(rand);
+                currentSolutions.set(i, rand);
+                currentSolutions.set(Integer.parseInt(pos), tempNode);
+                permutations.put(rand, String.valueOf(i));
+                permutations.put(tempNode, pos);
             }
         }
 

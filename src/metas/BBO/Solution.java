@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Solution {
 
-	LinkedList<Integer> permutation;
+	LinkedList<Integer> permutation = new LinkedList<>();
 	LinkedList<Vertex> verticesDT;
 	Graph tree;
 	Random rand;
@@ -34,6 +34,11 @@ public class Solution {
 	}
 
 	public Solution(int NbNodes) {
+		if(permutation.size() == 0){
+			for(int i = 0 ; i < NbNodes ; i ++)
+				permutation.add(i);
+		}
+
 		for (int j = 0; j < NbNodes; j++) {
 			permutation.add(j);
 		}

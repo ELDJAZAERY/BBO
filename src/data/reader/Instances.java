@@ -18,10 +18,8 @@ public class Instances {
 	    try {
 
 			//initialize some vertices and add them to the graph
-			for(int i = 0; i < NbNodes; i++)
-			{
+			for(int i = 0; i < NbNodes; i++) {
 				vertices.add(new Vertex("" + i));
-
 				graph.addVertex(vertices.get(i), true);
 			}
 
