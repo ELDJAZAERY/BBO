@@ -63,9 +63,8 @@ public class BBO {
         mu = new LinkedList<>();
 
         MaxNbGenerations = 300;
-        populationSize = 20;
+        populationSize = 10;
 
-        populationSize = populationSize;
 		PMutate = (float) 0.005;
 		I = (float) 1;
 		E = (float) 1;
@@ -94,7 +93,6 @@ public class BBO {
 			
 
 			for (int j = 0; j < populationSize; j++) {
-
 				LinkedList<Integer> currentSolutions = new LinkedList<>(population.get(j).sol.permutation);
 				HashMap<Integer, String> permutations = new HashMap<>();
 
