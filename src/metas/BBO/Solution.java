@@ -9,7 +9,9 @@ import java.util.Random;
 
 public class Solution {
 
-	LinkedList<Integer> permutation ;
+	static LinkedList<Integer> permutationInitial = new LinkedList<>();
+
+	LinkedList<Integer> permutation;
 	LinkedList<Vertex> verticesDT;
 	Graph tree;
 	Random rand;
@@ -22,8 +24,8 @@ public class Solution {
 
 	public float fitness;
 
-	public Solution(LinkedList<Integer> L, int NbNodes) {
-		permutation = new LinkedList<>(L);
+	public Solution(LinkedList<Integer> CurrentSol, int NbNodes) {
+		permutation = new LinkedList<>(CurrentSol);
 		verticesDT = new LinkedList<>();
 		tree = new Graph();
 		rand = new Random();
@@ -34,15 +36,14 @@ public class Solution {
 	}
 
 	public Solution(int NbNodes) {
-		if(permutation == null || permutation.size() == 0){
-		    permutation = new LinkedList<>();
-			for(int i = 0 ; i < NbNodes ; i ++)
-				permutation.add(i);
-		}
 
-		for (int j = 0; j < NbNodes; j++) {
-			permutation.add(j);
-		}
+	    if(permutationInitial.size() == 0){
+            for (int j = 0; j < NbNodes; j++) {
+                permutationInitial.add(j);
+            }
+        }
+
+        permutation = new LinkedList<>(permutationInitial);
 		verticesDT = new LinkedList<>();
 		tree = new Graph();
 		rand = new Random();

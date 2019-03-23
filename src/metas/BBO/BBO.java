@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class BBO {
 
     private int NbNodes;
@@ -19,11 +20,8 @@ public class BBO {
     private int populationSize; // max species count, for each island
     private LinkedList<Individual> population; // the species count probability of each
 
-    private float E; // max emigration rate, for each island
-    private LinkedList<Float> mu; // extinction (emigration) rate
+    private LinkedList<Float> mu; // emigration rate
 
-
-    private float I; // max immigration rate for each island
     private LinkedList<Float> lambda; // immigration rate
 
 
@@ -33,10 +31,6 @@ public class BBO {
 
     private Graph graph;
     private LinkedList<Vertex> vertices;
-    private LinkedList<Integer> L;
-
-
-    private int nbEvals;
 
     private Best best;
 
@@ -50,11 +44,6 @@ public class BBO {
 	    graph = instances.graph;
         vertices = instances.vertices;
         NbNodes = instances.NbNodes;
-        // Initialize the species count probability of each habitat
-        L = new LinkedList<>();
-        for (int j = 0; j < NbNodes; j++) {
-            L.add(j);
-        }
 
         population = new LinkedList<>();
 
@@ -66,9 +55,6 @@ public class BBO {
         populationSize = 10;
 
 		PMutate = (float) 0.005;
-		I = (float) 1;
-		E = (float) 1;
-		nbEvals = 0;
     }
 
 
@@ -109,10 +95,9 @@ public class BBO {
                     _Mutation(currentSolutions,permutations,j);
                 }
 
-				nbEvals++;
 				Solution individual = new Solution(currentSolutions, NbNodes);
 				individual.DT_P(graph, vertices);
-				Individual I = new Individual(individual, j, nbEvals);
+				Individual I = new Individual(individual, j, 0);
 				population.set(j, I);
 			}
 
@@ -152,18 +137,17 @@ public class BBO {
 	public void InitializePopulation() {
 
 		for (int i = 0; i < populationSize; i++) {
-			Solution individual = new Solution(L, NbNodes);
+			Solution individual = new Solution(NbNodes);
 			Collections.shuffle(individual.permutation);
 			individual.DT(graph, vertices);
-			Individual In = new Individual(individual, i, 0);
+			Individual In = new Individual(individual, i);
 			population.add(In);
-			nbEvals++;
 
 			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.add(I * (1 - (population.get(i).SpeciesCount / populationSize)));
+			lambda.add(1 - (population.get(i).SpeciesCount / populationSize));
 			// mu(i) is the emigration rate for habitat i
-			mu.add( E * population.get(i).SpeciesCount / populationSize);
+			mu.add( population.get(i).SpeciesCount / populationSize);
 		}
 
         updateProb();
@@ -174,9 +158,9 @@ public class BBO {
 		for (int i = 0; i < population.size(); i++) {
 			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.set(i, I * (1 - (population.get(i).SpeciesCount / populationSize)));
+			lambda.set(i, 1 - (population.get(i).SpeciesCount / populationSize));
 			// mu(i) is the emigration rate for habitat i
-			mu.set(i, E * population.get(i).SpeciesCount / populationSize);
+			mu.set(i, population.get(i).SpeciesCount / populationSize);
 		}
         updateProb();
 	}
@@ -250,7 +234,7 @@ public class BBO {
     private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
         for (int k = 0; k < populationSize; k++) {
-            Solution individual = new Solution(L, NbNodes);
+            Solution individual = new Solution(NbNodes);
             Collections.shuffle(individual.permutation);
             individual.DT(graph, vertices);
             Individual I = new Individual(individual, k, population.get(k).eval);
@@ -306,11 +290,11 @@ public class BBO {
 					int temp = permutation_pp.get(t);
 					permutation_pp.set(t, permutation_pp.get(v));
 					permutation_pp.set(v, temp);
-					nbEvals++;
+
 					Solution individual = new Solution(permutation_pp, NbNodes);
 					individual.DT(graph, vertices);
 
-					Individual I_pp = new Individual(individual, 0, nbEvals);
+					Individual I_pp = new Individual(individual, 0);
 
 					if (I_pp.cost < I_pc.cost) {
 						I_pc = I_pp;

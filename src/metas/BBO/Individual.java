@@ -10,12 +10,11 @@ public class Individual {
 	int eval;
 	float dist;
 
-	public Individual(Solution sol, int index, int eval)
+	public Individual(Solution sol, int index)
 	{
 		this.sol = sol;
 		this.cost = sol.fitness;
 		this.index = index;
-		this.eval = eval;
 		this.dist = 0;
 	}
 
