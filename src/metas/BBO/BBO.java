@@ -95,9 +95,7 @@ public class BBO {
                     _Mutation(currentSolutions,permutations,j);
                 }
 
-				Solution individual = new Solution(currentSolutions, NbNodes);
-				individual.DT_P(graph, vertices);
-				Individual I = new Individual(individual, j, 0);
+				Individual I = new Individual(graph,vertices,currentSolutions, NbNodes,j,false);
 				population.set(j, I);
 			}
 
@@ -135,12 +133,8 @@ public class BBO {
 
 
 	public void InitializePopulation() {
-
 		for (int i = 0; i < populationSize; i++) {
-			Solution individual = new Solution(NbNodes);
-			Collections.shuffle(individual.permutation);
-			individual.DT(graph, vertices);
-			Individual In = new Individual(individual, i);
+			Individual In = new Individual(graph,vertices,NbNodes,i,true);
 			population.add(In);
 
 			population.get(i).SpeciesCount = populationSize - i;
@@ -149,7 +143,6 @@ public class BBO {
 			// mu(i) is the emigration rate for habitat i
 			mu.add( population.get(i).SpeciesCount / populationSize);
 		}
-
         updateProb();
 	}
 
@@ -234,10 +227,7 @@ public class BBO {
     private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
         for (int k = 0; k < populationSize; k++) {
-            Solution individual = new Solution(NbNodes);
-            Collections.shuffle(individual.permutation);
-            individual.DT(graph, vertices);
-            Individual I = new Individual(individual, k, population.get(k).eval);
+            Individual I = new Individual(graph,vertices,NbNodes,k,true);
             population.set(k, I);
         }
         best.div = 0;
@@ -291,10 +281,7 @@ public class BBO {
 					permutation_pp.set(t, permutation_pp.get(v));
 					permutation_pp.set(v, temp);
 
-					Solution individual = new Solution(permutation_pp, NbNodes);
-					individual.DT(graph, vertices);
-
-					Individual I_pp = new Individual(individual, 0);
+					Individual I_pp = new Individual(graph,vertices,permutation_pp,NbNodes,0,false);
 
 					if (I_pp.cost < I_pc.cost) {
 						I_pc = I_pp;

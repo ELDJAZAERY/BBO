@@ -71,10 +71,7 @@ public class Solution {
 				Prims_MST prims = new Prims_MST(B.size());
 				prims.primsAlgorithm(G, B);
 				fitness = prims.DominatingTree_(verticesDT, G, solution, tree);
-				/** Binary representation **/
-//				for (int i = 0; i < solution.size(); i++) {
-//					SB[solution.get(i)] = 1;
-//				}
+
 				stop = true;
 			} else {
 				int index = solution.size();
