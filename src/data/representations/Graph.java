@@ -2,19 +2,12 @@ package data.representations;
 
 import java.util.*;
 
-/**
- * This class models a simple, undirected graph using an incidence list representation. 
- * Vertices are identified uniquely by their labels, and only unique vertices are allowed.
- * At most one Edge per vertex pair is allowed in this Graph.
- * Note that the Graph is designed to manage the Edges. 
- * You should not attempt to manually add Edges yourself.
-**/
 
-public class Graph 
-{
+public class Graph {
     
-    HashMap<String, Vertex> vertices;
-    HashMap<Integer, Edge> edges;
+    public HashMap<String, Vertex> vertices;
+
+    public HashMap<Integer, Edge> edges;
     
     
     public Graph() {
@@ -22,68 +15,20 @@ public class Graph
         this.edges = new HashMap<>();
     }
 
-    /**
-     * This constructor accepts an ArrayList<Vertex> and populates this.vertices. 
-     * If multiple Vertex objects have the same label, then the last Vertex with the given label is used. 
-    **/ 
-    
-    //@param vertices The initial Vertices to populate this Graph
-    public Graph(ArrayList<Vertex> vertices) {
-        this.vertices = new HashMap<>();
-        this.edges = new HashMap<>();
-        
-        for(Vertex v: vertices)
-        {
-            this.vertices.put(v.getLabel(), v);
-        }
-    }
 
-    public int size(){
-        return vertices.size();
-    }
-
-    /**
-     * This method adds am edge between Vertices one and two
-     * of weight 1, if no Edge between these Vertices already
-     * exists in the Graph.
-     **/ 
-     
-    //@param one The first vertex to add
-    //@param two The second vertex to add
-    //@return true iff no Edge relating one and two exists in the Graph
-    public boolean addEdge(Vertex one, Vertex two)
-    {
-        return addEdge(one, two, 1);
-    }
-    
-    
-    /**
-     * Accepts two vertices and a weight, and adds the edge 
-     * ({one, two}, weight) iff no Edge relating one and two 
-     * exists in the Graph.
-     **/ 
-     
-    //@param one The first Vertex of the Edge
-    //@param two The second Vertex of the Edge
-    //@param weight The weight of the Edge
-    //@return true iff no Edge already exists in the Graph
-    public boolean addEdge(Vertex one, Vertex two, float weight)
-    {
-        if(one.equals(two))
-        {
+    public boolean addEdge(Vertex one, Vertex two, float weight) {
+        if(one.equals(two)) {
             return false;   
         }
         
         //ensures the Edge is not in the Graph
         Edge e = new Edge(one, two, weight);
-        if(edges.containsKey(e.hashCode()))
-        {
+        if(edges.containsKey(e.hashCode())) {
             return false;
         }
         
         //and that the Edge isn't already incident to one of the vertices
-        else if(one.containsNeighbor(e) || two.containsNeighbor(e))
-        {
+        else if(one.containsNeighbor(e) || two.containsNeighbor(e)) {
             return false;
         }
             
@@ -93,9 +38,7 @@ public class Graph
         return true;
     }
     
-    
-    //@param e The Edge to look up
-    //@return true iff this Graph contains the Edge e
+
     public boolean containsEdge(Edge e){
         if(e.getOne() == null || e.getTwo() == null){
             return false;
@@ -103,58 +46,27 @@ public class Graph
         return this.edges.containsKey(e.hashCode());
     }
     
-    
-    //@param e The Edge to look up
-    //@return the weight of the Edge e
+
     public float containsEdgeWeight(Edge e)
     {
         return this.edges.get(e.hashCode()).getWeight();
     }
     
-    
-    /**
-     * This method removes the specified Edge from the Graph,
-     * including as each vertex's incidence neighborhood.
-    **/ 
-    
-    //@param e The Edge to remove from the Graph
-    //@return Edge The Edge removed from the Graph
-    public Edge removeEdge(Edge e) 
-    {
+
+    public Edge removeEdge(Edge e) {
        e.getOne().removeNeighbor(e);
        e.getTwo().removeNeighbor(e);
        return this.edges.remove(e.hashCode());
     }
     
-    
-    //@param vertex The Vertex to look up
-    //@return true iff this Graph contains vertex
-    public boolean containsVertex(Vertex vertex)
-    {
-        return this.vertices.get(vertex.getLabel()) != null;
-    }
-    
-    
-    //@param label The specified Vertex label
-    //@return Vertex The Vertex with the specified label
+
     public Vertex getVertex(String label)
     {
         return vertices.get(label);
     }
     
-    
-    /**
-     * This method adds a Vertex to the graph. If a Vertex with the same label
-     * as the parameter exists in the Graph, the existing Vertex is overwritten
-     * only if overwriteExisting is true. If the existing Vertex is overwritten,
-     * the Edges incident to it are all removed from the Graph.
-    **/ 
-    
-    //@param vertex
-    //@param overwriteExisting
-    //@return true iff vertex was added to the Graph
-    public boolean addVertex(Vertex vertex, boolean overwriteExisting)
-    {
+
+    public boolean addVertex(Vertex vertex, boolean overwriteExisting) {
         Vertex current = this.vertices.get(vertex.getLabel());
         if(current != null)
         {
@@ -171,12 +83,9 @@ public class Graph
         vertices.put(vertex.getLabel(), vertex);
         return true;
     }
-    
-    
-    //@param label The label of the Vertex to remove
-    //@return Vertex The removed Vertex object
-    public Vertex removeVertex(String label)
-    {
+
+
+    public Vertex removeVertex(String label) {
         Vertex v = vertices.remove(label);
         while(v.getNeighborCount() > 0)
         {
@@ -184,19 +93,6 @@ public class Graph
         }
         return v;
     }
-    
-    
-    //@return Set<String> The unique labels of the Graph's Vertex objects
-    public Set<String> vertexKeys()
-    {
-        return this.vertices.keySet();
-    }
-    
-    
-    //@return Set<Edge> The Edges of this graph
-    public Set<Edge> getEdges()
-    {
-        return new HashSet<Edge>(this.edges.values());
-    }
-        
+
+
 }

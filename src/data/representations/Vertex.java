@@ -17,7 +17,7 @@ public class Vertex {
 	// @param label The unique label associated with this Vertex
 	public Vertex(String label) {
 		this.label = label;
-		this.neighborhood = new ArrayList<Edge>();
+		this.neighborhood = new ArrayList<>();
 	}
 
 	/**

@@ -59,10 +59,6 @@ public class Edge implements Comparable<Edge> {
 		return this.weight;
 	}
 
-	// @param weight The new weight of this Edge
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
 
 	/**
 	 * Note that the compareTo() method deviates from the specifications in the

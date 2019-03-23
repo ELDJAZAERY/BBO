@@ -8,42 +8,68 @@ import java.util.LinkedList;
 
 public class Instances {
 
-	private BufferedReader br;
-
 	public Graph graph;
 	public LinkedList<Vertex> vertices;
     public int NbNodes;
+    public int NbArcs;
 
-	public Instances(Graph graph, LinkedList<Vertex> vertices, int NbNodes, String range, String file, String node)  {
-	    try {
+    public String compare = "";
 
-			//initialize some vertices and add them to the graph
-			for(int i = 0; i < NbNodes; i++) {
-				vertices.add(new Vertex("" + i));
-				graph.addVertex(vertices.get(i), true);
-			}
+    public Instances(String path)  {
 
-			InputStream ips = new FileInputStream("Instances\\"+range+"\\"+node+"_"+file+".txt");
-			InputStreamReader ipsr=new InputStreamReader(ips);
-			br = new BufferedReader(ipsr);
-			String [] temp;
-			String ligne;
-			while((ligne=br.readLine())!=null)
-			{
-				if(ligne.length()!=0)
-				{
-					temp=ligne.split("[|]");
-					graph.addEdge(vertices.get(Integer.parseInt(temp[0])), vertices.get(Integer.parseInt(temp[1])), Float.parseFloat(temp[2]));
-				}
-			}
-		}catch (Exception e){
-			e.printStackTrace();
-		}finally {
-	    	this.graph    = graph;
-	    	this.vertices = vertices;
-	    	this.NbNodes  = NbNodes;
-		}
+        graph = new Graph();
+        vertices = new LinkedList<>();
 
-	}
+        String[] lines = readFile(path);
+
+        String[] info = lines[0].split(" ");
+
+        String[] row;
+
+        NbNodes = Integer.valueOf(info[0].trim());
+        NbArcs  = Integer.valueOf(info[1].trim());
+
+        initVertices();
+        for(int i = 1 ; i <= NbArcs ; i++) {
+            row = lines[i].split(" ");
+            compare += ""+vertices.get(Integer.parseInt(row[0].trim()))+
+                    vertices.get(Integer.parseInt(row[1].trim()))+
+                    Float.parseFloat(row[2].trim());
+
+            graph.addEdge(
+                    vertices.get(Integer.parseInt(row[0].trim())),
+                    vertices.get(Integer.parseInt(row[1].trim())),
+                    Float.parseFloat(row[2].trim())
+            );
+        }
+    }
+
+    private void initVertices(){
+        for(int i = 0; i < NbNodes; i++) {
+            vertices.add(new Vertex("" +i));
+            graph.addVertex(vertices.get(i), true);
+        }
+    }
+
+    private static String[] readFile(String path) {
+        String content = null;
+        File file = new File(path); // For example, foo.txt
+        FileReader reader = null;
+        try {
+            reader = new FileReader(file);
+            char[] chars = new char[(int) file.length()];
+            reader.read(chars);
+            content = new String(chars);
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(reader != null){
+                try{reader.close();}catch(Exception e){}
+            }
+        }
+
+        return content.split("\n");
+    }
 
 }

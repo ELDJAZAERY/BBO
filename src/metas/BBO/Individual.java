@@ -18,8 +18,8 @@ public class Individual {
 	int eval;
 
 
-	public Individual(Graph graph, LinkedList<Vertex> vertices,LinkedList<Integer> CurrentSol, int NbNodes , int index , boolean shuffle){
-        Solution sol = new Solution(CurrentSol, NbNodes);
+	public Individual(Graph graph, LinkedList<Vertex> vertices,LinkedList<Integer> CurrentSol,int index , boolean shuffle){
+        Solution sol = new Solution(CurrentSol);
         if(shuffle)
             Collections.shuffle(sol.permutation);
         sol.DT_P(graph, vertices);

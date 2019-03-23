@@ -70,6 +70,7 @@ public class BBO {
         best.update(population.get(0),0,0);
         best.display();
 
+
         /**\// ## Updating Population Loop ## \//**/
 		for (int i = 0; i < MaxNbGenerations; i++) {
 		    
@@ -95,7 +96,7 @@ public class BBO {
                     _Mutation(currentSolutions,permutations,j);
                 }
 
-				Individual I = new Individual(graph,vertices,currentSolutions, NbNodes,j,false);
+				Individual I = new Individual(graph,vertices,currentSolutions,j,false);
 				population.set(j, I);
 			}
 
@@ -281,7 +282,7 @@ public class BBO {
 					permutation_pp.set(t, permutation_pp.get(v));
 					permutation_pp.set(v, temp);
 
-					Individual I_pp = new Individual(graph,vertices,permutation_pp,NbNodes,0,false);
+					Individual I_pp = new Individual(graph,vertices,permutation_pp,0,false);
 
 					if (I_pp.cost < I_pc.cost) {
 						I_pc = I_pp;
