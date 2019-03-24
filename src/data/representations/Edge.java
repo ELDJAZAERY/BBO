@@ -1,5 +1,8 @@
 package data.representations;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * This class models an undirected Edge in the Graph implementation. An Edge
  * contains two vertices and a weight. If no weight is specified, the default is
@@ -92,5 +95,16 @@ public class Edge implements Comparable<Edge> {
 		Edge e = (Edge) other;
 		return e.one.equals(this.one) && e.two.equals(this.two);
 	}
+
+
+	// ###########
+
+	public boolean contains(LinkedList<Vertex> verticesDT){
+		if(verticesDT.contains(one) &&
+                verticesDT.contains(two))
+			return true;
+		return false;
+	}
+
 
 }

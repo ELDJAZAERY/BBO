@@ -34,7 +34,10 @@ public class Graph {
             
         edges.put(e.hashCode(), e);
         one.addNeighbor(e);
+        one.addNeighbor(two);
+
         two.addNeighbor(e);
+        two.addNeighbor(one);
         return true;
     }
     

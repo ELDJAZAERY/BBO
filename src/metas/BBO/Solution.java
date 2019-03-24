@@ -30,7 +30,8 @@ public class Solution {
 
 	public Solution(int NbNodes) {
 
-	    if(permutationInitial.size() == 0){
+	    if(permutationInitial.size() != NbNodes ){
+	    	permutationInitial.clear();
             for (int j = 0; j < NbNodes; j++) {
                 permutationInitial.add(j);
             }

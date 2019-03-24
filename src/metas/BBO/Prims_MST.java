@@ -147,6 +147,7 @@ public class Prims_MST {
 		return weight;
 	}
 
+
 	public float DominatingTree_(LinkedList<Vertex> vertices, Graph graph, LinkedList<Integer> DominatingVertices, Graph DT) {
 		float weight = 0;
 		for (int i = 0; i < DominatingVertices.size(); i++) {

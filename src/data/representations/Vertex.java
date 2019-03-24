@@ -1,24 +1,27 @@
 package data.representations;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
-/**
- * This class models a vertex in a graph. A label for this vertex is required.
- * Note that the Graph object only accepts one Vertex per label, so uniqueness
- * of labels is important. This vertex's neighborhood is described by the Edges
- * incident to it.
- **/
 
 public class Vertex {
 
+    private String label;
+    private HashSet<Vertex> neighbors;
 	private ArrayList<Edge> neighborhood;
-	private String label;
 
 	// @param label The unique label associated with this Vertex
 	public Vertex(String label) {
 		this.label = label;
 		this.neighborhood = new ArrayList<>();
+		neighbors = new HashSet<>();
 	}
+
+    public Vertex(Integer label) {
+        this.label = ""+label;
+        this.neighborhood = new ArrayList<>();
+        neighbors = new HashSet<>();
+    }
 
 	/**
 	 * This method adds an Edge to the incidence neighborhood of this graph if
@@ -32,6 +35,10 @@ public class Vertex {
 		}
 		this.neighborhood.add(edge);
 	}
+
+    public void addNeighbor(Vertex neighbor) {
+        neighbors.add(neighbor);
+    }
 
 	// @param other The edge for which to search
 	// @return true if other is contained in this.neighborhood
@@ -88,10 +95,27 @@ public class Vertex {
 		return this.label.equals(v.label);
 	}
 
+
 	// @return ArrayList<Edge> A copy of this.neighborhood. Modifying the
 	// returned ArrayList will not affect the neighborhood of this Vertex
 	public ArrayList<Edge> getNeighbors() {
 		return new ArrayList<Edge>(this.neighborhood);
 	}
+
+
+	// ############
+
+
+    public boolean isNeighbor(Vertex v){
+        return neighbors.contains(v);
+    }
+
+    public boolean isNeighbor(HashSet<Vertex> nodes){
+        for(Vertex n:nodes)
+            if(isNeighbor(n)) return true;
+        return false;
+    }
+
+
 
 }

@@ -13,8 +13,6 @@ public class Instances {
     public int NbNodes;
     public int NbArcs;
 
-    public String compare = "";
-
     public Instances(String path)  {
 
         graph = new Graph();
@@ -30,12 +28,10 @@ public class Instances {
         NbArcs  = Integer.valueOf(info[1].trim());
 
         initVertices();
+
+        // init Edges
         for(int i = 1 ; i <= NbArcs ; i++) {
             row = lines[i].split(" ");
-            compare += ""+vertices.get(Integer.parseInt(row[0].trim()))+
-                    vertices.get(Integer.parseInt(row[1].trim()))+
-                    Float.parseFloat(row[2].trim());
-
             graph.addEdge(
                     vertices.get(Integer.parseInt(row[0].trim())),
                     vertices.get(Integer.parseInt(row[1].trim())),
