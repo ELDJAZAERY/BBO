@@ -37,7 +37,6 @@ public class Best {
 		I = newBest;
 		NbN = newBest.sol.verticesDT.size();
 		verticesDT = new LinkedList<>(newBest.sol.verticesDT);
-		tree = newBest.sol.tree;
 	}
 
     public void display(){

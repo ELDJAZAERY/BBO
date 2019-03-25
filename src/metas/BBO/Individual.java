@@ -1,11 +1,13 @@
 package metas.BBO;
 
 
-import data.representations.Graph;
-import data.representations.Vertex;
+import data.representations.Solution;
+
+import data.reader.Instances;
 
 import java.util.Collections;
 import java.util.LinkedList;
+
 
 public class Individual {
 
@@ -18,22 +20,22 @@ public class Individual {
 	int eval;
 
 
-	public Individual(Graph graph, LinkedList<Vertex> vertices,LinkedList<Integer> CurrentSol,int index , boolean shuffle){
-        Solution sol = new Solution(CurrentSol);
+	public Individual(Instances instances,LinkedList<Integer> CurrentSol,int index , boolean shuffle){
+        Solution sol = new Solution(instances , CurrentSol);
         if(shuffle)
             Collections.shuffle(sol.permutation);
-        sol.DT_P(graph, vertices);
+
         this.sol = sol;
         this.cost = sol.fitness;
         this.index = index;
         this.eval = ++nbEval;
     }
 
-    public Individual(Graph graph, LinkedList<Vertex> vertices, int NbNodes , int index , boolean shuffle){
-        Solution sol = new Solution(NbNodes);
+    public Individual( Instances instances, int index , boolean shuffle){
+        Solution sol = new Solution(instances);
         if(shuffle)
             Collections.shuffle(sol.permutation);
-        sol.DT_P(graph, vertices);
+        sol.DT();
         this.sol = sol;
         this.cost = sol.fitness;
         this.index = index;

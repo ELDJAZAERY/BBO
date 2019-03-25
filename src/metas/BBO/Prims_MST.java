@@ -41,14 +41,14 @@ public class Prims_MST {
 		parent[0] = 0;
 
 		while (getUnsettledCount(unsettled) != 0) {
-			evaluationVertex = getMimumKeyVertexFromUnsettled(unsettled, graph, vertices);
+			evaluationVertex = getMimumKeyVertexFromUnsettled(vertices);
 			unsettled[evaluationVertex] = false;
 			settled[evaluationVertex] = true;
 			evaluateNeighbours(evaluationVertex, graph, vertices);
 		}
 	}
 
-	private int getMimumKeyVertexFromUnsettled(boolean[] unsettled2, Graph graph, LinkedList<Vertex> vertices) {
+	private int getMimumKeyVertexFromUnsettled(LinkedList<Vertex> vertices) {
 		float min = Integer.MAX_VALUE;
 
 		int node = 0;
@@ -151,7 +151,9 @@ public class Prims_MST {
 	public float DominatingTree_(LinkedList<Vertex> vertices, Graph graph, LinkedList<Integer> DominatingVertices, Graph DT) {
 		float weight = 0;
 		for (int i = 0; i < DominatingVertices.size(); i++) {
-			vertices.add(new Vertex("" + DominatingVertices.get(i)));
+			vertices.add(
+					new Vertex(DominatingVertices.get(i).toString())
+			);
 			DT.addVertex(vertices.get(i), true);
 		}
 		// Construction of the dominating tree

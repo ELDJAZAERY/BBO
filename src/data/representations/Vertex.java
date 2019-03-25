@@ -17,12 +17,6 @@ public class Vertex {
 		neighbors = new HashSet<>();
 	}
 
-    public Vertex(Integer label) {
-        this.label = ""+label;
-        this.neighborhood = new ArrayList<>();
-        neighbors = new HashSet<>();
-    }
-
 	/**
 	 * This method adds an Edge to the incidence neighborhood of this graph if
 	 * the edge is not already present.
@@ -106,13 +100,13 @@ public class Vertex {
 	// ############
 
 
-    public boolean isNeighbor(Vertex v){
-        return neighbors.contains(v);
+    public boolean isNeighbor(Vertex other){
+	    return neighbors.contains(other);
     }
 
-    public boolean isNeighbor(HashSet<Vertex> nodes){
-        for(Vertex n:nodes)
-            if(isNeighbor(n)) return true;
+    public boolean isNeighbor(HashSet<Vertex> vertices){
+        for(Vertex v:vertices)
+            if(isNeighbor(v)) return true;
         return false;
     }
 

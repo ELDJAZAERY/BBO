@@ -12,13 +12,13 @@ public class Solution {
     private static LinkedList<Integer> permutationInitial = new LinkedList<>();
     private LinkedList<Vertex> vertices;
 
-    protected LinkedList<Integer> permutation;
-    protected LinkedList<Vertex> verticesDT;
+    public LinkedList<Integer> permutation;
+    public LinkedList<Vertex> verticesDT;
 
-    protected float fitness;
-    protected int nbEvaluations;
+    public float fitness;
+    public int nbEvaluations;
 
-    protected HashSet<Edge> path;
+    public HashSet<Edge> path;
 
 
     public Solution(Instances instances) {
@@ -31,22 +31,21 @@ public class Solution {
 
         vertices = instances.vertices;
         permutation = new LinkedList<>(permutationInitial);
-
-        verticesDT = DominatingSet();
-        connect();
-        MST();
+        DT();
     }
 
     public Solution(Instances instances , LinkedList<Integer> CurrentSol) {
         vertices = instances.vertices;
-
         permutation = new LinkedList<>(CurrentSol);
+        DT();
+    }
 
+
+    public void DT(){
         verticesDT = DominatingSet();
         connect();
         MST();
     }
-
 
     private LinkedList<Vertex> DominatingSet() {
         LinkedList<Vertex> dominating_set = new LinkedList<>();
@@ -60,7 +59,7 @@ public class Solution {
                 computer++;
             }
 
-            dominating_set.add(new Vertex(permutation.get(j)));
+            dominating_set.add(vertices.get(permutation.get(j)));
             Vertex V = vertices.get(permutation.get(j));
             for (int k = 0; k < V.getNeighborCount(); k++) {
                 int v = Integer.parseInt(V.getNeighbor(k).getNeighbor(V).getLabel());
@@ -76,19 +75,30 @@ public class Solution {
         return dominating_set;
     }
 
+    private void connect(){
+        while(!isConnected()){
+            verticesDT.add(vertices.get(permutation.get(verticesDT.size())));
+        }
+    }
 
     private boolean isConnected(){
+
+        if(verticesDT.isEmpty()) return false;
+
         ArrayList<Vertex> vertices = new ArrayList<>(verticesDT);
         HashSet<Vertex> tempTree = new HashSet<>();
 
         tempTree.add(vertices.get(0));
         vertices.remove(0);
 
-        for(int i=0;i<vertices.size();i++){
-            if(vertices.get(i).isNeighbor(tempTree)){
-                tempTree.add(vertices.get(i));
+        Vertex tempV;
+        for(int i=0;i<vertices.size();i++) {
+            tempV = vertices.get(i);
+
+            if (tempV.isNeighbor(tempTree)){
+                tempTree.add(tempV);
                 vertices.remove(i);
-                i=-1;
+                i = -1;
             }
         }
 
@@ -127,13 +137,6 @@ public class Solution {
         }
 
         MAJ_Fitness();
-    }
-
-
-    private void connect(){
-        while(!isConnected()){
-            verticesDT.add(new Vertex(permutation.get(verticesDT.size())));
-        }
     }
 
 

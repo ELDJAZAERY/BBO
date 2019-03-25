@@ -4,6 +4,7 @@ package metas.BBO;
 import data.reader.Instances;
 import data.representations.Graph;
 import data.representations.Vertex;
+import data.representations.Solution;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -31,6 +32,7 @@ public class BBO {
 
     private Graph graph;
     private LinkedList<Vertex> vertices;
+    private Instances instances;
 
     private Best best;
 
@@ -41,6 +43,7 @@ public class BBO {
 
 	public BBO(Instances instances) {
 
+        this.instances = instances;
 	    graph = instances.graph;
         vertices = instances.vertices;
         NbNodes = instances.NbNodes;
@@ -96,7 +99,7 @@ public class BBO {
                     _Mutation(currentSolutions,permutations,j);
                 }
 
-				Individual I = new Individual(graph,vertices,currentSolutions,j,false);
+				Individual I = new Individual(instances,currentSolutions,j,false);
 				population.set(j, I);
 			}
 
@@ -135,7 +138,7 @@ public class BBO {
 
 	public void InitializePopulation() {
 		for (int i = 0; i < populationSize; i++) {
-			Individual In = new Individual(graph,vertices,NbNodes,i,true);
+			Individual In = new Individual(instances,i,true);
 			population.add(In);
 
 			population.get(i).SpeciesCount = populationSize - i;
@@ -228,7 +231,7 @@ public class BBO {
     private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
         for (int k = 0; k < populationSize; k++) {
-            Individual I = new Individual(graph,vertices,NbNodes,k,true);
+            Individual I = new Individual(instances,k,true);
             population.set(k, I);
         }
         best.div = 0;
@@ -282,7 +285,7 @@ public class BBO {
 					permutation_pp.set(t, permutation_pp.get(v));
 					permutation_pp.set(v, temp);
 
-					Individual I_pp = new Individual(graph,vertices,permutation_pp,0,false);
+					Individual I_pp = new Individual(instances,permutation_pp,0,false);
 
 					if (I_pp.cost < I_pc.cost) {
 						I_pc = I_pp;
