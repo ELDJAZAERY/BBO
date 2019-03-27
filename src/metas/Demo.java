@@ -7,7 +7,7 @@ public class Demo {
 
 	public static void main(String[] args) {
 
-        String path = "bench_marks\\100\\50_1.txt";
+        String path = "bench_marks\\100\\500_1.txt";
 
         Instances instances = new Instances(path);
 

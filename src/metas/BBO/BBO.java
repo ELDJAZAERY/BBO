@@ -55,7 +55,7 @@ public class BBO {
         mu = new LinkedList<>();
 
         MaxNbGenerations = 300;
-        populationSize = 20;
+        populationSize = 10;
 
 		PMutate = (float) 0.005;
     }

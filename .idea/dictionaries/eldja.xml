@@ -3,7 +3,9 @@
     <words>
       <w>evals</w>
       <w>newgraph</w>
+      <w>numberofvertices</w>
       <w>popsize</w>
+      <w>purninable</w>
     </words>
   </dictionary>
 </component>

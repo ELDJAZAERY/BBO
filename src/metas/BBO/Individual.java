@@ -22,9 +22,10 @@ public class Individual {
 
 	public Individual(Instances instances,LinkedList<Integer> CurrentSol,int index , boolean shuffle){
         Solution sol = new Solution(instances , CurrentSol);
-        if(shuffle)
+        if(shuffle){
             Collections.shuffle(sol.permutation);
-
+            sol.DT();
+        }
         this.sol = sol;
         this.cost = sol.fitness;
         this.index = index;
@@ -33,9 +34,10 @@ public class Individual {
 
     public Individual( Instances instances, int index , boolean shuffle){
         Solution sol = new Solution(instances);
-        if(shuffle)
+        if(shuffle){
             Collections.shuffle(sol.permutation);
-        sol.DT();
+            sol.DT();
+        }
         this.sol = sol;
         this.cost = sol.fitness;
         this.index = index;

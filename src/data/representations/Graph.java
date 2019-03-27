@@ -61,7 +61,7 @@ public class Graph {
        e.getTwo().removeNeighbor(e);
        return this.edges.remove(e.hashCode());
     }
-    
+
 
     public Vertex getVertex(String label)
     {

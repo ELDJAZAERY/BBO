@@ -44,6 +44,7 @@ public class Solution {
     public void DT(){
         verticesDT = DominatingSet();
         connect();
+        pruning();
         MST();
     }
 
@@ -111,32 +112,42 @@ public class Solution {
         path = new HashSet<>();
 
         Vertex nextNode;
-        ArrayList<Vertex> nodes = new ArrayList<>();
-        ArrayList<Edge>  ququeArcs = new ArrayList<>();
+        HashSet<Vertex> nodes = new HashSet<>();
+        ArrayList<Edge> ququeArcs = new ArrayList<>();
 
         nextNode = verticesDT.get(0);
         nodes.add(nextNode);
-        ququeArcs.addAll(nextNode.getNeighbors());
+        ququeArcs.addAll(nextNode.getDominNeighbors(verticesDT));
 
         while(!nodes.containsAll(verticesDT)){
             Collections.sort(ququeArcs);
             for(Edge arc:ququeArcs) {
-                if(!arc.contains(verticesDT)) continue;
+                if(!arc.contains_vertex(verticesDT)) continue;
                 if (!nodes.contains(arc.getTwo())){
                     path.add(arc);
                     nodes.add(arc.getTwo());
-                    ququeArcs.addAll(arc.getTwo().getNeighbors());
+                    ququeArcs.addAll(arc.getTwo().getDominNeighbors(verticesDT));
                     break;
                 }else if(!nodes.contains(arc.getOne())){
                     path.add(arc);
                     nodes.add(arc.getOne());
-                    ququeArcs.addAll(arc.getOne().getNeighbors());
+                    ququeArcs.addAll(arc.getOne().getDominNeighbors(verticesDT));
                     break;
                 }
             }
         }
 
         MAJ_Fitness();
+    }
+
+
+    private void pruning(){
+        HashSet<Vertex> afterPruning = new HashSet<>(verticesDT);
+        for(Vertex v : verticesDT){
+            if(v.isPurninable(afterPruning))
+                afterPruning.remove(v);
+        }
+        verticesDT = new LinkedList<>(afterPruning);
     }
 
 
