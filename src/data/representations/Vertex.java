@@ -3,6 +3,7 @@ package data.representations;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class Vertex {
@@ -68,7 +69,7 @@ public class Vertex {
 	}
 
 
-    public HashSet<Edge> getDominNeighbors(LinkedList<Vertex> dominVertices) {
+    public HashSet<Edge> getDominNeighbors(List<Vertex> dominVertices) {
         HashSet<Edge> dominNeighbors = new HashSet<>();
         for(Edge edge:neighborhood){
             if(edge.isDomin(dominVertices))
@@ -76,6 +77,16 @@ public class Vertex {
         }
         return dominNeighbors;
     }
+
+    public HashSet<Vertex> getDominNeighborsv(List<Vertex> dominVertices) {
+        HashSet<Vertex> dominNeighbors = new HashSet<>();
+        for(Vertex v : neighbors)
+            if(dominVertices.contains(v))
+                dominNeighbors.add(v);
+
+        return dominNeighbors;
+    }
+
 
 
     public boolean isNeighbor(Vertex other){
@@ -95,6 +106,10 @@ public class Vertex {
             if(!neighbor.haveAnotherDominNeighbor(this,verticeDT))
                 return false;
 	    return true;
+    }
+
+    public HashSet<Vertex> getNeighbors() {
+        return neighbors;
     }
 
     public int nbDominNeighbors(HashSet<Vertex> verticeDT){

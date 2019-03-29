@@ -3,6 +3,7 @@ package data.representations;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Edge implements Comparable<Edge> {
 
@@ -33,7 +34,7 @@ public class Edge implements Comparable<Edge> {
 
 	public ArrayList<Vertex> getVertices(){return vertices;}
 
-	public boolean isDomin(LinkedList<Vertex> DominVertices){
+	public boolean isDomin(List<Vertex> DominVertices){
         return (DominVertices.contains(one) && DominVertices.contains(two));
     }
 

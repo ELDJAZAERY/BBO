@@ -1,10 +1,8 @@
 package data.representations;
 
 import data.reader.Instances;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
+
+import java.util.*;
 
 
 public class Solution {
@@ -141,6 +139,16 @@ public class Solution {
     }
 
 
+    public void MAJ_Fitness(){
+        fitness = 0;
+        if(verticesDT.size() == 0 || path.size() == 0) return;
+        for(Edge edge:path){
+            fitness += edge.getWeight();
+        }
+        nbEvaluations++;
+    }
+
+    
     private void pruning(){
         HashSet<Vertex> afterPruning = new HashSet<>(verticesDT);
         for(Vertex v : verticesDT){
@@ -151,13 +159,177 @@ public class Solution {
     }
 
 
-    public void MAJ_Fitness(){
-        fitness = 0;
-        if(verticesDT.size() == 0 || path.size() == 0) return;
-        for(Edge edge:path){
-            fitness += edge.getWeight();
+
+    /** Alternative connect mthd **/
+
+    public void Connect(){
+
+        ArrayList<Vertex> DominateSet = new ArrayList<>(verticesDT);
+        HashSet<Vertex> newDominateSet = new HashSet<>();
+
+        HashSet<Vertex> path0 , path1 , path2 ;
+
+
+        Vertex maxNode = getHaveMaxDominNeighbr(DominateSet);
+        path0 = maxNode.getDominNeighborsv(DominateSet);
+
+        newDominateSet.add(maxNode);
+        newDominateSet.addAll(path0);
+
+        DominateSet.remove(maxNode);
+        DominateSet.removeAll(path0);
+
+
+        while(!DominateSet.isEmpty()){
+
+            maxNode = getHaveMaxDominNeighbr(DominateSet);
+
+            path0 = getPath0(newDominateSet,DominateSet,maxNode,false);
+
+            if(!path0.isEmpty()){
+                newDominateSet.addAll(path0);
+                DominateSet.removeAll(path0);
+                continue;
+            }
+
+
+            path1 = getPath1(newDominateSet,DominateSet,maxNode,false);
+
+            if(!path1.isEmpty()){
+                newDominateSet.addAll(path1);
+                DominateSet.removeAll(path1);
+                continue;
+            }
+
+
+
+            path2 = getPath2(newDominateSet,DominateSet,maxNode,false);
+
+            if(!path2.isEmpty()){
+                newDominateSet.addAll(path2);
+                DominateSet.removeAll(path2);
+                continue;
+            }
+
         }
-        nbEvaluations++;
+
+        verticesDT = new LinkedList<>(newDominateSet);
     }
 
+
+    public HashSet<Vertex> getPath0(HashSet<Vertex> newDominateSet , ArrayList<Vertex> DominateSet , Vertex MaxNode , boolean onlyForMAxNode){
+
+        HashSet<Vertex> path0 = new HashSet<>();
+
+        HashSet<Vertex>  MaxNodeDN  , tempNodeDN ;
+
+        if(MaxNode != null && MaxNode.isNeighbor(newDominateSet)){
+            MaxNodeDN = MaxNode.getDominNeighborsv(DominateSet);
+
+            path0.add(MaxNode);
+            path0.addAll(MaxNodeDN);
+
+            return path0;
+        }
+
+        if(onlyForMAxNode) return path0;
+
+        for(Vertex node:DominateSet){
+            if(node.isNeighbor(newDominateSet)){
+                tempNodeDN = node.getDominNeighborsv(DominateSet);
+
+                path0.add(node);
+                path0.addAll(tempNodeDN);
+
+                return path0;
+            }
+        }
+
+        return path0;
+    }
+
+
+    public HashSet<Vertex> getPath1(HashSet<Vertex> newDominateSet , ArrayList<Vertex> DominateSet , Vertex MaxNode ,boolean onlyForMAxNode){
+
+        HashSet<Vertex> path1 = new HashSet<>();
+
+        if(MaxNode != null){
+            for(Vertex node :MaxNode.getNeighbors()){
+                path1 = getPath0(newDominateSet,DominateSet,node,true);
+                if(!path1.isEmpty()) {
+                    path1.add(MaxNode);
+                    path1.addAll(MaxNode.getDominNeighborsv(DominateSet));
+                    return path1;
+                }
+            }
+        }
+
+        if(onlyForMAxNode) return path1;
+
+
+        for(Vertex node:DominateSet){
+            for(Vertex node2 : node.getNeighbors()){
+                path1 = getPath0(newDominateSet,DominateSet,node2,true);
+                if(!path1.isEmpty()) {
+                    path1.add(node);
+                    path1.addAll(node.getDominNeighborsv(DominateSet));
+                    return path1;
+                }
+            }
+        }
+
+        return path1;
+    }
+
+
+    public HashSet<Vertex> getPath2(HashSet<Vertex> newDominateSet , ArrayList<Vertex> DominateSet ,Vertex MaxNode,boolean onlyForMAxNode){
+
+        HashSet<Vertex> path2 = new HashSet<>();
+
+        if(MaxNode != null){
+            for(Vertex node :MaxNode.getNeighbors()){
+                path2 = getPath0(newDominateSet,DominateSet,node,true);
+                if(!path2.isEmpty()) {
+                    path2.add(MaxNode);
+                    path2.addAll(MaxNode.getDominNeighborsv(DominateSet));
+                    return path2;
+                }
+            }
+        }
+
+        if(onlyForMAxNode) return path2;
+
+
+        for(Vertex node:DominateSet){
+            for(Vertex node2 : node.getNeighbors()){
+                path2 = getPath1(newDominateSet,DominateSet,node2,true);
+                if(!path2.isEmpty()) {
+                    path2.add(node);
+                    path2.addAll(node.getDominNeighborsv(DominateSet));
+                    return path2;
+                }
+            }
+        }
+
+        return path2;
+    }
+
+
+    public Vertex getHaveMaxDominNeighbr(List<Vertex> dominSet){
+
+        int max = 0;
+        Vertex maxNode = dominSet.get(0);
+
+        for(Vertex node:dominSet){
+            int nbDN = node.getDominNeighbors(dominSet).size();
+            if( nbDN > max){
+                maxNode = node;
+                max = nbDN;
+            }
+        }
+
+        return maxNode;
+    }
+
+    
 }
