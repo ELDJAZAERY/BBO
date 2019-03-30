@@ -2,83 +2,51 @@ package data.representations;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 
 public class Vertex {
 
+    public  int index ;
     private String label;
     private HashSet<Vertex> neighbors;
-	private ArrayList<Edge> neighborhood;
-    public int index ;
+	private ArrayList<Edge> neighborsEdges;
+
 
 	public Vertex(String label) {
 		this.label = label;
-		this.index = Integer.valueOf(label);
-		this.neighborhood = new ArrayList<>();
+		index = Integer.valueOf(label);
+		neighborsEdges = new ArrayList<>();
 		neighbors = new HashSet<>();
 	}
 
-	public void addNeighbor(Edge edge) {
-		if (this.neighborhood.contains(edge)) {
-			return;
-		}
-		this.neighborhood.add(edge);
+	public void addNeighbor(Edge edge){
+		if(!neighborsEdges.contains(edge))
+		    neighborsEdges.add(edge);
 	}
 
     public void addNeighbor(Vertex neighbor) {
         neighbors.add(neighbor);
     }
 
-    public boolean containsNeighbor(Edge other) {
-		return this.neighborhood.contains(other);
-	}
+    /** Getters **/
 
-	public Edge getNeighbor(int index) {
-		return this.neighborhood.get(index);
-	}
+	public Edge getNeighbor(int index) { return neighborsEdges.get(index); }
 
-    public void removeNeighbor(Edge e) {
-        this.neighborhood.remove(e);
-    }
-
-	public int getNeighborCount() {
-		return this.neighborhood.size();
-	}
+	public int getNeighborCount() { return neighborsEdges.size(); }
 
 	public String getLabel() {
-		return this.label;
+		return label;
 	}
 
-	public String toString() {
-		return " " + label;
-	}
-
-	public int hashCode() {
-		return this.label.hashCode();
-	}
-
-	public boolean equals(Object other) {
-		if (!(other instanceof Vertex)) {
-			return false;
-		}
-
-		Vertex v = (Vertex) other;
-		return this.label.equals(v.label);
-	}
-
-
-    public HashSet<Edge> getDominNeighbors(List<Vertex> dominVertices) {
-        HashSet<Edge> dominNeighbors = new HashSet<>();
-        for(Edge edge:neighborhood){
-            if(edge.isDomin(dominVertices))
-                dominNeighbors.add(edge);
-        }
-        return dominNeighbors;
+    public HashSet<Vertex> getNeighbors() {
+        return neighbors;
     }
 
-    public HashSet<Vertex> getDominNeighborsv(List<Vertex> dominVertices) {
+
+    /** Helpers **/
+
+    public HashSet<Vertex> getDominNeighbors(List<Vertex> dominVertices) {
         HashSet<Vertex> dominNeighbors = new HashSet<>();
         for(Vertex v : neighbors)
             if(dominVertices.contains(v))
@@ -87,9 +55,16 @@ public class Vertex {
         return dominNeighbors;
     }
 
+    public HashSet<Edge> getDominNeighborsEdges(List<Vertex> dominVertices) {
+        HashSet<Edge> dominNeighbors = new HashSet<>();
+        for(Edge edge: neighborsEdges){
+            if(edge.isDomin(dominVertices))
+                dominNeighbors.add(edge);
+        }
+        return dominNeighbors;
+    }
 
-
-    public boolean isNeighbor(Vertex other){
+    private boolean isNeighbor(Vertex other){
 	    return neighbors.contains(other);
     }
 
@@ -99,36 +74,52 @@ public class Vertex {
         return false;
     }
 
-    public boolean isPurninable(HashSet<Vertex> verticeDT){
-	    if(nbDominNeighbors(verticeDT)>1) return false;
+    public boolean isPurninable(HashSet<Vertex> verticesDT){
+	    if(nbDominNeighbors(verticesDT)>1) return false;
 
 	    for(Vertex neighbor:neighbors)
-            if(!neighbor.haveAnotherDominNeighbor(this,verticeDT))
+            if(!neighbor.haveAnotherDominNeighbor(this,verticesDT))
                 return false;
 	    return true;
     }
 
-    public HashSet<Vertex> getNeighbors() {
-        return neighbors;
-    }
-
-    public int nbDominNeighbors(HashSet<Vertex> verticeDT){
+    private int nbDominNeighbors(HashSet<Vertex> verticesDT){
 	    int cpt = 0;
-	    for(Vertex v:verticeDT){
+	    for(Vertex v:verticesDT){
 	        if(neighbors.contains(v))
 	            cpt++;
         }
         return cpt;
     }
 
-    public boolean haveAnotherDominNeighbor(Vertex vertex , HashSet<Vertex> verticeDT){
+    private boolean haveAnotherDominNeighbor(Vertex vertex , HashSet<Vertex> verticesDT){
         for(Vertex neighbor : neighbors){
-            if(verticeDT.contains(neighbor) &&
+            if(verticesDT.contains(neighbor) &&
                     !neighbor.equals(vertex))
                 return true;
         }
         return false;
     }
 
+
+
+    @Override
+    public String toString() {
+        return " " + label;
+    }
+
+    @Override
+    public int hashCode() {
+        return label.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Vertex)) {
+            return false;
+        }
+        Vertex v = (Vertex) other;
+        return this.label.equals(v.label);
+    }
 
 }

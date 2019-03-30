@@ -4,7 +4,6 @@ package metas.BBO;
 import data.reader.Instances;
 import data.representations.Graph;
 import data.representations.Vertex;
-import data.representations.Solution;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -35,6 +34,7 @@ public class BBO {
     private Instances instances;
 
     private Best best;
+    private float diff;
 
     private int random(int range){
         range = (range == 0) ? 1 : range;
@@ -46,7 +46,7 @@ public class BBO {
         this.instances = instances;
 	    graph = instances.graph;
         vertices = instances.vertices;
-        NbNodes = instances.NbNodes;
+        NbNodes = instances.NbVertices;
 
         population = new LinkedList<>();
 
@@ -55,7 +55,7 @@ public class BBO {
         mu = new LinkedList<>();
 
         MaxNbGenerations = 300;
-        populationSize = 30;
+        populationSize = 10;
 
 		PMutate = (float) 0.005;
     }
@@ -90,6 +90,9 @@ public class BBO {
 					permutations.put(currentSolutions.get(n), String.valueOf(n));
 				}
 
+
+                //_Permutation(currentSolutions,permutations,j);
+
 				// Random 0% --> 100%
 				if (random(100) < lambda.get(j)) {
 				    /** Permutations **/
@@ -116,14 +119,16 @@ public class BBO {
             /** evaluate Population **/
 			Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
 
-			if (best.cost > population.get(0).cost) {
+			if ( (diff = (best.cost - population.get(0).cost)) > 0) {
                 best.update(population.get(0),i,startTime);
                 best.display();
+                if(diff < 2)
+                    best.div ++;
 			} else {
 				best.div++;
 			}
 
-			if (best.div >= 25) {
+			if (best.div >= 3) {
 			    /** Diversification **/
 			    _Diversity(elitism);
 			}
@@ -181,7 +186,6 @@ public class BBO {
             prob.add((float) 1 / (1 + sommeT));
         }
     }
-
 
 
     private void _Permutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){

@@ -8,10 +8,11 @@ import java.util.LinkedList;
 
 public class Instances {
 
-	public Graph graph;
-	public LinkedList<Vertex> vertices;
-    public int NbNodes;
-    public int NbArcs;
+    public int NbVertices;
+    public int NbEdges;
+
+    public Graph graph;
+    public LinkedList<Vertex> vertices;
 
     public Instances(String path)  {
 
@@ -24,13 +25,13 @@ public class Instances {
 
         String[] row;
 
-        NbNodes = Integer.valueOf(info[0].trim());
-        NbArcs  = Integer.valueOf(info[1].trim());
+        NbVertices = Integer.valueOf(info[0].trim());
+        NbEdges = Integer.valueOf(info[1].trim());
 
         initVertices();
 
         // init Edges
-        for(int i = 1 ; i <= NbArcs ; i++) {
+        for(int i = 1; i <= NbEdges; i++) {
             row = lines[i].split(" ");
             graph.addEdge(
                     vertices.get(Integer.parseInt(row[0].trim())),
@@ -41,11 +42,12 @@ public class Instances {
     }
 
     private void initVertices(){
-        for(int i = 0; i < NbNodes; i++) {
+        for(int i = 0; i < NbVertices; i++) {
             vertices.add(new Vertex("" +i));
-            graph.addVertex(vertices.get(i), true);
+            graph.addVertex(vertices.get(i));
         }
     }
+
 
     private static String[] readFile(String path) {
         String content = null;
