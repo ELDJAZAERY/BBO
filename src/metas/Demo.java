@@ -2,6 +2,7 @@ package metas;
 
 import data.reader.Instances;
 import metas.BBO.BBO;
+import metas.GA.GA;
 
 public class Demo {
 
@@ -9,11 +10,17 @@ public class Demo {
 
         String path = "bench_marks\\100\\50_1.txt";
 
-        Instances instances = new Instances(path);
+        new Instances(path);
 
-		BBO bbo = new BBO(instances);
-
+		BBO bbo = new BBO(300,10,(float) 0.005);
 		bbo.BBO_Exec();
+
+
+		GA ga = new GA(50,10000);
+        //ga.Exec();
+
+
+
 	}
 
 }	

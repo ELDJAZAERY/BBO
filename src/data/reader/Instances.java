@@ -8,11 +8,11 @@ import java.util.LinkedList;
 
 public class Instances {
 
-    public int NbVertices;
-    public int NbEdges;
+    public static int NbVertices;
+    public static int NbEdges;
 
-    public Graph graph;
-    public LinkedList<Vertex> vertices;
+    public static Graph graph;
+    public static LinkedList<Vertex> vertices;
 
     public Instances(String path)  {
 

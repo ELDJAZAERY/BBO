@@ -1,18 +1,15 @@
 package data.representations;
 
 import data.reader.Instances;
-
-
 import java.util.*;
 
 
 public class Solution {
 
-    private static LinkedList<Integer> permutationInitial = new LinkedList<>();
-    private LinkedList<Vertex> vertices;
+    private static ArrayList<Integer> permutationInitial = new ArrayList<>();
 
-    public LinkedList<Integer> permutation;
-    public LinkedList<Vertex> verticesDT;
+    public ArrayList<Integer> permutation;
+    public ArrayList<Vertex> verticesDT;
     public HashSet<Edge> path;
     public float fitness;
 
@@ -20,23 +17,21 @@ public class Solution {
     public int nbEvaluations;
 
 
-    public Solution(Instances instances) {
-        if(permutationInitial.size() != instances.NbVertices){
+    public Solution() {
+        if(permutationInitial.size() != Instances.NbVertices){
             permutationInitial.clear();
-            for (int j = 0; j < instances.NbVertices; j++) {
+            for (int j = 0; j < Instances.NbVertices; j++) {
                 permutationInitial.add(j);
             }
         }
 
-        vertices = instances.vertices;
-        permutation = new LinkedList<>(permutationInitial);
+        permutation = new ArrayList<>(permutationInitial);
         DT();
     }
 
 
-    public Solution(Instances instances , LinkedList<Integer> CurrentSol) {
-        vertices = instances.vertices;
-        permutation = new LinkedList<>(CurrentSol);
+    public Solution(List<Integer> CurrentSol) {
+        permutation = new ArrayList<>(CurrentSol);
         DT();
     }
 
@@ -49,8 +44,15 @@ public class Solution {
     }
 
 
-    private LinkedList<Vertex> DominatingSet(){
-        LinkedList<Vertex> dominating_set = new LinkedList<>();
+    private ArrayList<Vertex> DominatingSet(){
+        ArrayList<Vertex> dominating_set = new ArrayList<>();
+
+        /** Correction phase **/
+        if(permutation.size() < Instances.vertices.size()){
+            for(Integer vertex:permutationInitial)
+                if(permutation.contains(vertex))
+                    permutation.add(vertex);
+        }
 
         int[] temp = new int[permutation.size()];
         int computer = 0, j = 0;
@@ -61,8 +63,8 @@ public class Solution {
                 computer++;
             }
 
-            dominating_set.add(vertices.get(permutation.get(j)));
-            Vertex V = vertices.get(permutation.get(j));
+            dominating_set.add(Instances.vertices.get(permutation.get(j)));
+            Vertex V = Instances.vertices.get(permutation.get(j));
             for (int k = 0; k < V.getNeighborCount(); k++) {
                 int v = Integer.parseInt(V.getNeighbor(k).getTheOtherOne(V).getLabel());
                 if(temp[v] == 0){
@@ -127,7 +129,7 @@ public class Solution {
             if(v.isPurninable(afterPruning))
                 afterPruning.remove(v);
         }
-        verticesDT = new LinkedList<>(afterPruning);
+        verticesDT = new ArrayList<>(afterPruning);
     }
 
 
@@ -144,7 +146,7 @@ public class Solution {
 
     private void connect(){
         while(!isConnected()){
-            verticesDT.add(vertices.get(permutation.get(verticesDT.size())));
+            verticesDT.add(Instances.vertices.get(permutation.get(verticesDT.size())));
         }
     }
 
@@ -224,7 +226,7 @@ public class Solution {
 
         }
 
-        verticesDT = new LinkedList<>(newDominateSet);
+        verticesDT = new ArrayList<>(newDominateSet);
     }
 
 

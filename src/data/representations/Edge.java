@@ -44,7 +44,7 @@ public class Edge implements Comparable<Edge> {
         return (DominVertices.contains(one) && DominVertices.contains(two));
     }
 
-	public boolean contains_vertex(LinkedList<Vertex> verticesDT){
+	public boolean contains_vertex(List<Vertex> verticesDT){
 		if(verticesDT.contains(one) && verticesDT.contains(two))
 			return true;
 		return false;

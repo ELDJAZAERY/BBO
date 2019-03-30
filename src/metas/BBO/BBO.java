@@ -31,7 +31,6 @@ public class BBO {
 
     private Graph graph;
     private LinkedList<Vertex> vertices;
-    private Instances instances;
 
     private Best best;
     private float diff;
@@ -41,12 +40,10 @@ public class BBO {
         return ThreadLocalRandom.current().nextInt(0,range);
     }
 
-	public BBO(Instances instances) {
-
-        this.instances = instances;
-	    graph = instances.graph;
-        vertices = instances.vertices;
-        NbNodes = instances.NbVertices;
+	public BBO(int MaxNbGenerations , int populationSize , float PMutate){
+	    graph = Instances.graph;
+        vertices = Instances.vertices;
+        NbNodes = Instances.NbVertices;
 
         population = new LinkedList<>();
 
@@ -54,10 +51,9 @@ public class BBO {
         lambda = new LinkedList<>();
         mu = new LinkedList<>();
 
-        MaxNbGenerations = 300;
-        populationSize = 10;
-
-		PMutate = (float) 0.005;
+        this.MaxNbGenerations = MaxNbGenerations;
+        this.populationSize = populationSize;
+		this.PMutate = PMutate;
     }
 
 
@@ -102,7 +98,7 @@ public class BBO {
                     _Mutation(currentSolutions,permutations,j);
                 }
 
-				Individual I = new Individual(instances,currentSolutions,j,false);
+				Individual I = new Individual(currentSolutions,j,false);
 				population.set(j, I);
 			}
 
@@ -111,13 +107,13 @@ public class BBO {
 
 
             /** Elitism with the worst **/
-            Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
+            Collections.sort(population);
 			population.set(populationSize - 1, elitism.get(0));
 			population.set(populationSize - 2, elitism.get(1));
 
 
             /** evaluate Population **/
-			Collections.sort(population, (r1, r2) -> r1.compareTo(r2));
+			Collections.sort(population);
 
 			if ( (diff = (best.cost - population.get(0).cost)) > 0) {
                 best.update(population.get(0),i,startTime);
@@ -143,7 +139,7 @@ public class BBO {
 
 	public void InitializePopulation() {
 		for (int i = 0; i < populationSize; i++) {
-			Individual In = new Individual(instances,i,true);
+			Individual In = new Individual(i,true);
 			population.add(In);
 
 			population.get(i).SpeciesCount = populationSize - i;
@@ -186,6 +182,7 @@ public class BBO {
             prob.add((float) 1 / (1 + sommeT));
         }
     }
+
 
 
     private void _Permutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){
@@ -235,7 +232,7 @@ public class BBO {
     private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
         for (int k = 0; k < populationSize; k++) {
-            Individual I = new Individual(instances,k,true);
+            Individual I = new Individual(k,true);
             population.set(k, I);
         }
         best.div = 0;
@@ -246,7 +243,7 @@ public class BBO {
         population.set(populationSize - 3, best.I);
 
         // Rank habitats
-        Collections.sort(population,(r1,r2) -> r1.compareTo(r2));
+        Collections.sort(population);
     }
 
 
@@ -289,7 +286,7 @@ public class BBO {
 					permutation_pp.set(t, permutation_pp.get(v));
 					permutation_pp.set(v, temp);
 
-					Individual I_pp = new Individual(instances,permutation_pp,0,false);
+					Individual I_pp = new Individual(permutation_pp,0,false);
 
 					if (I_pp.cost < I_pc.cost) {
 						I_pc = I_pp;
