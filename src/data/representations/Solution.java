@@ -4,7 +4,7 @@ import data.reader.Instances;
 import java.util.*;
 
 
-public class Solution {
+public class Solution implements Cloneable {
 
     private static ArrayList<Integer> permutationInitial = new ArrayList<>();
 
@@ -35,8 +35,17 @@ public class Solution {
         DT();
     }
 
+    public Solution(Solution clone) {
+        permutation = clone.permutation;
+        verticesDT = clone.verticesDT;
+        path = clone.path;
+        fitness = clone.fitness;
+    }
 
-    public void DT(){
+    public void Correction(){
+        DT();
+    }
+    private void DT(){
         verticesDT = DominatingSet();
         Connect();
         pruning();
@@ -50,7 +59,7 @@ public class Solution {
         /** Correction phase **/
         if(permutation.size() < Instances.vertices.size()){
             for(Integer vertex:permutationInitial)
-                if(permutation.contains(vertex))
+                if(!permutation.contains(vertex))
                     permutation.add(vertex);
         }
 
@@ -344,5 +353,10 @@ public class Solution {
         return maxVertex;
     }
 
-    
+
+    @Override
+    public Object clone(){
+        return new Solution(this);
+    }
+
 }

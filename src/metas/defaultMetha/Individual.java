@@ -1,12 +1,10 @@
-package metas.GA;
+package metas.defaultMetha;
 
-import data.reader.Instances;
+
 import data.representations.Solution;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Individual implements Comparable {
+public class Individual implements Comparable , Cloneable {
 
     static int nbEval = 0 ;
 
@@ -20,28 +18,23 @@ public class Individual implements Comparable {
         eval = ++nbEval;
     }
 
+    public Individual(Individual other){
+        this.sol = (Solution) other.sol.clone();
+    }
 
-    private Individual(Solution s1 , Solution s2){
-        ArrayList<Integer> crossed = new ArrayList<>();
-        int rand;
+    public Individual shaking(int K){
+        Individual clone = (Individual) this.clone();
 
-        for(int i = 0; i < Instances.NbVertices ; i ++){
-            rand = ThreadLocalRandom.current().nextInt(0,100);
-            if(rand < 50){
-                if(!crossed.contains(s1.permutation.get(i)))
-                    crossed.add(s1.permutation.get(i));
-            }else{
-                if(!crossed.contains(s2.permutation.get(i)))
-                    crossed.add(s2.permutation.get(i));
-            }
+        for(int i=0 ; i <= K ; i++) {
+            clone.mutation();
         }
 
-        this.sol = new Solution(new ArrayList<>(crossed));
+        // Correction of solution after shaking
+        clone.sol.Correction();
+
+        return clone;
     }
 
-    public static Individual crossOver(Individual one,Individual otherOne){
-        return new Individual(one.sol,otherOne.sol);
-    }
 
     public void mutation(){
         int randIndex = ThreadLocalRandom.current()
@@ -55,8 +48,17 @@ public class Individual implements Comparable {
     }
 
 
-    public Individual LocalSearch(){
-        return this;
+    public Individual LocalSearch(int K){
+
+        Individual cloneSolution = (Individual) this.clone();
+
+        for(int i=1 ; i <= K ; i++) {
+            cloneSolution.shaking(K);
+        }
+
+        cloneSolution.sol.Correction();
+
+        return cloneSolution;
     }
 
 
@@ -79,6 +81,11 @@ public class Individual implements Comparable {
     @Override
     public int compareTo(Object other) {
         return ((int)sol.fitness - (int)((Individual) other).sol.fitness);
+    }
+
+    @Override
+    protected Object clone() {
+        return new Individual(this);
     }
 
 }

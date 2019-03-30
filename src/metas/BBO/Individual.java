@@ -24,7 +24,7 @@ public class Individual implements Comparable {
         Solution sol = new Solution(CurrentSol);
         if(shuffle){
             Collections.shuffle(sol.permutation);
-            sol.DT();
+            sol.Correction();
         }
         this.sol = sol;
         this.cost = sol.fitness;
@@ -36,7 +36,7 @@ public class Individual implements Comparable {
         Solution sol = new Solution();
         if(shuffle){
             Collections.shuffle(sol.permutation);
-            sol.DT();
+            sol.Correction();
         }
         this.sol = sol;
         this.cost = sol.fitness;

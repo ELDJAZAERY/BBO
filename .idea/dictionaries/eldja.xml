@@ -2,6 +2,8 @@
   <dictionary name="eldja">
     <words>
       <w>evals</w>
+      <w>iter</w>
+      <w>kmax</w>
       <w>newgraph</w>
       <w>numberofvertices</w>
       <w>popsize</w>
