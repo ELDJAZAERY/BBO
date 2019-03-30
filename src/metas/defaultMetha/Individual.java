@@ -1,7 +1,7 @@
 package metas.defaultMetha;
 
 
-import data.representations.Solution;
+import data.representations.Solutions.Solution;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Individual implements Comparable , Cloneable {

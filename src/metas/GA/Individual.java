@@ -1,9 +1,8 @@
 package metas.GA;
 
 import data.reader.Instances;
-import data.representations.Solution;
+import data.representations.Solutions.Solution;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Individual implements Comparable {

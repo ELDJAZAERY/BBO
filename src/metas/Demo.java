@@ -2,6 +2,7 @@ package metas;
 
 import data.reader.Instances;
 import metas.BBO.BBO;
+import metas.BSO.BSO_Algo;
 import metas.GA.GA;
 import metas.defaultMetha.Heuristic;
 
@@ -18,10 +19,11 @@ public class Demo {
         Heuristic heuristic = new Heuristic(15,1000);
 
 
-        ga.Exec();
+        //ga.Exec();
 		//bbo.BBO_Exec();
-        //heuristic.Exec();
+        BSO_Algo.Exec(10,5,1000);
 
+        //heuristic.Exec();
 	}
 
 }	

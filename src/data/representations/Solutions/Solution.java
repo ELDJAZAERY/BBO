@@ -1,6 +1,9 @@
-package data.representations;
+package data.representations.Solutions;
 
 import data.reader.Instances;
+import data.representations.Edge;
+import data.representations.Vertex;
+
 import java.util.*;
 
 
@@ -58,6 +61,7 @@ public class Solution implements Cloneable {
 
         /** Correction phase **/
         if(permutation.size() < Instances.vertices.size()){
+            Collections.shuffle(permutationInitial);
             for(Integer vertex:permutationInitial)
                 if(!permutation.contains(vertex))
                     permutation.add(vertex);
@@ -192,7 +196,7 @@ public class Solution implements Cloneable {
         HashSet<Vertex> path0 , path1 , path2 ;
 
 
-        Vertex maxVertex = getHaveMaxDominNeighbr(DominateSet);
+        Vertex maxVertex = getHaveMaxDominNeighbor(DominateSet);
         path0 = maxVertex.getDominNeighbors(DominateSet);
 
         newDominateSet.add(maxVertex);
@@ -204,7 +208,7 @@ public class Solution implements Cloneable {
 
         while(!DominateSet.isEmpty()){
 
-            maxVertex = getHaveMaxDominNeighbr(DominateSet);
+            maxVertex = getHaveMaxDominNeighbor(DominateSet);
 
             path0 = getPath0(newDominateSet,DominateSet,maxVertex,false);
 
@@ -337,7 +341,7 @@ public class Solution implements Cloneable {
     }
 
 
-    public Vertex getHaveMaxDominNeighbr(List<Vertex> dominSet){
+    public Vertex getHaveMaxDominNeighbor(List<Vertex> dominSet){
 
         int max = 0;
         Vertex maxVertex = dominSet.get(0);

@@ -1,9 +1,7 @@
 package metas.BBO;
 
 
-import data.representations.Solution;
-
-import data.reader.Instances;
+import data.representations.Solutions.Solution;
 
 import java.util.Collections;
 import java.util.LinkedList;
