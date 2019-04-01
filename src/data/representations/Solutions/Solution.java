@@ -28,6 +28,7 @@ public class Solution implements Cloneable {
             }
         }
 
+        Collections.shuffle(permutationInitial);
         permutation = new ArrayList<>(permutationInitial);
         DT();
     }

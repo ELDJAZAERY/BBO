@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/promo - version/data/representations/Solution.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/data/representations/Solution.java" afterPath="$PROJECT_DIR$/src/data/representations/Solutions/Solution.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/promo - version/data/representations/Solutions/Solution.class" afterPath="$PROJECT_DIR$/out/production/promo - version/data/representations/Solutions/Solution.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/BBO.class" afterPath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/BBO.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/Individual.class" afterPath="$PROJECT_DIR$/out/production/promo - version/metas/BBO/Individual.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/BSO/Solution.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/promo - version/metas/Demo.class" afterPath="$PROJECT_DIR$/out/production/promo - version/metas/Demo.class" />
+      <change beforePath="$PROJECT_DIR$/src/data/representations/Solutions/Solution.java" afterPath="$PROJECT_DIR$/src/data/representations/Solutions/Solution.java" />
+      <change beforePath="$PROJECT_DIR$/src/metas/BBO/BBO.java" afterPath="$PROJECT_DIR$/src/metas/BBO/BBO.java" />
       <change beforePath="$PROJECT_DIR$/src/metas/BBO/Individual.java" afterPath="$PROJECT_DIR$/src/metas/BBO/Individual.java" />
+      <change beforePath="$PROJECT_DIR$/src/metas/BSO/Solution.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/metas/Demo.java" afterPath="$PROJECT_DIR$/src/metas/Demo.java" />
-      <change beforePath="$PROJECT_DIR$/src/metas/GA/Individual.java" afterPath="$PROJECT_DIR$/src/metas/GA/Individual.java" />
-      <change beforePath="$PROJECT_DIR$/src/metas/defaultMetha/Individual.java" afterPath="$PROJECT_DIR$/src/metas/defaultMetha/Individual.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/promo___version$Demo__1_.coverage" NAME="Demo (1) Coverage Results" MODIFIED="1553972317786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/promo___version$Demo__1_.coverage" NAME="Demo (1) Coverage Results" MODIFIED="1554154230304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>metas.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/promo___version$Main_test__1_.coverage" NAME="Main_test (1) Coverage Results" MODIFIED="1553353999182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -91,79 +95,9 @@
       <file leaf-file-name="Demo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/metas/Demo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="50.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Logs/100/50.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-35">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bee.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metas/BSO/Bee.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Binary_Solution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/representations/Solutions/Binary_Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1298#1299#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1431#1432#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BSO_Algo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Algo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BSO_Solution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1220#1221#0" expanded="true" />
-                <element signature="e#1248#1249#0" expanded="true" />
-                <element signature="e#2965#2966#0" expanded="true" />
-                <element signature="e#3008#3009#0" expanded="true" />
-                <element signature="e#3064#3065#0" expanded="true" />
-                <element signature="e#3139#3140#0" expanded="true" />
-                <element signature="e#3182#3183#0" expanded="true" />
-                <element signature="e#3227#3228#0" expanded="true" />
-                <element signature="e#3273#3274#0" expanded="true" />
-                <element signature="e#3312#3313#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -179,10 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>permutationTemp_2</find>
-      <find>new Individual</find>
-      <find>Solution</find>
-      <find>E</find>
       <find>lambda</find>
       <find>mu</find>
       <find>PMutate</find>
@@ -209,6 +139,10 @@
       <find>dSolution</find>
       <find>methas.BSO</find>
       <find>methas.BSO.</find>
+      <find>permutationInitial.get</find>
+      <find>stop</find>
+      <find>find</find>
+      <find>SpeciesCount</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -272,21 +206,21 @@
         <option value="$PROJECT_DIR$/src/data/representations/Vertex.java" />
         <option value="$PROJECT_DIR$/src/data/representations/Edge.java" />
         <option value="$PROJECT_DIR$/src/data/reader/Instances.java" />
-        <option value="$PROJECT_DIR$/src/metas/BBO/BBO.java" />
         <option value="$PROJECT_DIR$/src/metas/GA/GA.java" />
         <option value="$PROJECT_DIR$/src/metas/defaultMetha/dAlgo.java" />
         <option value="$PROJECT_DIR$/src/metas/defaultMetha/dSolution.java" />
-        <option value="$PROJECT_DIR$/src/metas/BBO/Individual.java" />
         <option value="$PROJECT_DIR$/src/metas/GA/Individual.java" />
         <option value="$PROJECT_DIR$/src/metas/defaultMetha/Individual.java" />
         <option value="$PROJECT_DIR$/src/metas/BSO/Solution.java" />
         <option value="$PROJECT_DIR$/src/data/representations/Solution.java" />
-        <option value="$PROJECT_DIR$/src/data/representations/Solutions/Solution.java" />
         <option value="$PROJECT_DIR$/src/metas/BSO/Bee.java" />
         <option value="$PROJECT_DIR$/src/metas/BSO/BSO_Algo.java" />
         <option value="$PROJECT_DIR$/src/data/representations/Solutions/Binary_Solution.java" />
         <option value="$PROJECT_DIR$/src/metas/BSO/BSO_Solution.java" />
         <option value="$PROJECT_DIR$/src/metas/Demo.java" />
+        <option value="$PROJECT_DIR$/src/data/representations/Solutions/Solution.java" />
+        <option value="$PROJECT_DIR$/src/metas/BBO/Individual.java" />
+        <option value="$PROJECT_DIR$/src/metas/BBO/BBO.java" />
       </list>
     </option>
   </component>
@@ -337,56 +271,6 @@
             <path>
               <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
               <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="Logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="Logs" type="462c0819:PsiDirectoryNode" />
-              <item name="100" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="representations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="representations" type="462c0819:PsiDirectoryNode" />
-              <item name="Solutions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="metas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="promo - version" type="b2602c69:ProjectViewProjectNode" />
-              <item name="promo - version" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="metas" type="462c0819:PsiDirectoryNode" />
-              <item name="BSO" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -649,11 +533,12 @@
       <workItem from="1553899112875" duration="7973000" />
       <workItem from="1553937075883" duration="27255000" />
       <workItem from="1553978436292" duration="6784000" />
+      <workItem from="1554147946409" duration="10452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138666000" />
+    <option name="totallyTimeSpent" value="149118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
@@ -667,14 +552,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5581633" sideWeight="0.49131513" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61247945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6486043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6174056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5450644" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24795918" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25306123" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.4846154" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4730769" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4549356" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -687,7 +573,6 @@
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5581633" sideWeight="0.5086849" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -731,7 +616,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -769,10 +654,10 @@
             <element signature="method#random#0;class#BBO#0" expanded="false" />
             <element signature="method#UpdatePopulations#0;class#BBO#0" expanded="false" />
             <element signature="method#updateProb#0;class#BBO#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#BBO#0" expanded="false" />
+            <element signature="method#_Crossing#0;class#BBO#0" expanded="false" />
             <element signature="method#_Mutation#0;class#BBO#0" expanded="false" />
             <element signature="method#_LocalSearch#0;class#BBO#0" expanded="false" />
-            <element signature="method#_VNS_Function_I#0;class#BBO#0" expanded="false" />
+            <element signature="method#_Individual_Search#0;class#BBO#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -915,22 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/BBO/BBO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="method#random#0;class#BBO#0" expanded="false" />
-            <element signature="method#UpdatePopulations#0;class#BBO#0" expanded="false" />
-            <element signature="method#updateProb#0;class#BBO#0" expanded="false" />
-            <element signature="method#_Permutation#0;class#BBO#0" expanded="false" />
-            <element signature="method#_Mutation#0;class#BBO#0" expanded="false" />
-            <element signature="method#_LocalSearch#0;class#BBO#0" expanded="false" />
-            <element signature="method#_VNS_Function_I#0;class#BBO#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/ComparableTimSort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -953,7 +822,7 @@
         <state relative-caret-position="294">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -981,6 +850,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Algo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logs/100/50.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/representations/Solutions/Binary_Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/BSO/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -989,90 +884,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2297">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/representations/Solutions/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6779">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="258">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#9810#9811#0" expanded="true" />
-            <element signature="e#9851#9852#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+            <element signature="e#1203#1204#0" expanded="true" />
+            <element signature="e#9859#9860#0" expanded="true" />
+            <element signature="e#9900#9901#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/BBO/Individual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-192">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#987#988#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Algo.java">
+    <entry file="file://$PROJECT_DIR$/src/metas/BBO/BBO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="88">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#random#0;class#BBO#0" expanded="false" />
+            <element signature="method#UpdatePopulations#0;class#BBO#0" expanded="false" />
+            <element signature="method#updateProb#0;class#BBO#0" expanded="false" />
+            <element signature="method#_Crossing#0;class#BBO#0" expanded="false" />
+            <element signature="method#_Mutation#0;class#BBO#0" expanded="false" />
+            <element signature="method#_LocalSearch#0;class#BBO#0" expanded="false" />
+            <element signature="method#_Individual_Search#0;class#BBO#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/BSO/Bee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="550">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/representations/Solutions/Binary_Solution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1298#1299#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/metas/BSO/BSO_Solution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#2965#2966#0" expanded="true" />
-            <element signature="e#3008#3009#0" expanded="true" />
-            <element signature="e#3064#3065#0" expanded="true" />
-            <element signature="e#3139#3140#0" expanded="true" />
-            <element signature="e#3182#3183#0" expanded="true" />
-            <element signature="e#3227#3228#0" expanded="true" />
-            <element signature="e#3273#3274#0" expanded="true" />
-            <element signature="e#3312#3313#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Logs/100/100.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Logs/100/50.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
+        <state relative-caret-position="176">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
@@ -1080,8 +950,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/metas/Demo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding />
         </state>
       </provider>

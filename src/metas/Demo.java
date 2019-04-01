@@ -10,7 +10,7 @@ public class Demo {
 
 	public static void main(String[] args) {
 
-        String path = "bench_marks\\100\\50_1.txt";
+        String path = "bench_marks\\100\\100_1.txt";
 
         new Instances(path);
 
@@ -20,8 +20,8 @@ public class Demo {
 
 
         //ga.Exec();
-		//bbo.BBO_Exec();
-        BSO_Algo.Exec(10,5,1000);
+		bbo.BBO_Exec();
+        //BSO_Algo.Exec(10,5,1000);
 
         //heuristic.Exec();
 	}

@@ -76,29 +76,21 @@ public class BBO {
 			LinkedList<Individual> elitism = new LinkedList<>();
 			elitism.add(population.get(0));
 			elitism.add(population.get(1));
-			
+
 
 			for (int j = 0; j < populationSize; j++) {
 				LinkedList<Integer> currentSolutions = new LinkedList<>(population.get(j).sol.permutation);
-				HashMap<Integer, String> permutations = new HashMap<>();
-
-				for (int n = 0; n < currentSolutions.size(); n++) {
-					permutations.put(currentSolutions.get(n), String.valueOf(n));
-				}
-
-
-                //_Permutation(currentSolutions,permutations,j);
 
 				// Random 0% --> 100%
 				if (random(100) < lambda.get(j)) {
 				    /** Permutations **/
-				    _Permutation(currentSolutions,permutations,j);
+				    _Crossing(currentSolutions,j);
 				}else{
 				    /** Mutations **/
-                    _Mutation(currentSolutions,permutations,j);
+                    _Mutation(currentSolutions,j);
                 }
 
-				Individual I = new Individual(currentSolutions,j,false);
+				Individual I = new Individual(currentSolutions);
 				population.set(j, I);
 			}
 
@@ -139,7 +131,7 @@ public class BBO {
 
 	public void InitializePopulation() {
 		for (int i = 0; i < populationSize; i++) {
-			Individual In = new Individual(i,true);
+			Individual In = new Individual();
 			population.add(In);
 
 			population.get(i).SpeciesCount = populationSize - i;
@@ -184,8 +176,13 @@ public class BBO {
     }
 
 
+    private void _Crossing(LinkedList<Integer> currentSolutions , int j){
 
-    private void _Permutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){
+        HashMap<Integer, String> permutations = new HashMap<>();
+        for (int n = 0; n < currentSolutions.size(); n++) {
+            permutations.put(currentSolutions.get(n), String.valueOf(n));
+        }
+
         for (int l = 0; l < populationSize && l != j; l++) {
 
             if (random(100) < mu.get(l)) {
@@ -205,8 +202,13 @@ public class BBO {
     }
 
 
-    private void _Mutation(LinkedList<Integer> currentSolutions ,HashMap<Integer, String> permutations , int j){
-        // Mutation
+    private void _Mutation(LinkedList<Integer> currentSolutions , int j){
+
+        HashMap<Integer, String> permutations = new HashMap<>();
+        for (int n = 0; n < currentSolutions.size(); n++) {
+            permutations.put(currentSolutions.get(n), String.valueOf(n));
+        }
+
         float mi;
         mi = PMutate * ( (1 - (prob.get(j))) / Collections.max(prob));
         for (int i = 0; i < NbNodes; i++) {
@@ -232,7 +234,7 @@ public class BBO {
     private void _Diversity(LinkedList<Individual> elitism){
         System.out.println("Jumping Out");
         for (int k = 0; k < populationSize; k++) {
-            Individual I = new Individual(k,true);
+            Individual I = new Individual();
             population.set(k, I);
         }
         best.div = 0;
@@ -247,14 +249,16 @@ public class BBO {
     }
 
 
+    /** <Local Search> **/
+
     /** Local Search Multi Thread **/
     private void _LocalSearch(){
-        /** <Local Search> **/
+
         ArrayList<Callable<Void>> taskList = new ArrayList<>();
         for (int j = 0; j < populationSize; j++) {
             final int th = j;
             Callable<Void> callable = () -> {
-                _VNS_Function_I(th);
+                _Individual_Search(th);
                 return null;
             };
             taskList.add(callable);
@@ -265,40 +269,40 @@ public class BBO {
             executor.invokeAll(taskList);
         } catch (InterruptedException ie) {
         }
-        /** </Local Search> **/
-
     }
 
     /**  Local search individual **/
-	private void _VNS_Function_I(int i) {
+    private void _Individual_Search(int i) {
 
-		Individual I_p = population.get(i);
-		boolean stop = false;
+        Individual individual = population.get(i);
+        LinkedList<Integer> permutation;
+        Individual current ;
+        int temp;
 
-		while (!stop) {
-			stop = true;
-			for (int t = 0; t < I_p.sol.verticesDT.size(); t++) {
-				boolean find = false;
-				Individual I_pc = I_p;
-				for (int v = I_p.sol.verticesDT.size(); v < NbNodes && !find; v++) {
-					LinkedList<Integer> permutation_pp = new LinkedList<>(I_p.sol.permutation);
-					int temp = permutation_pp.get(t);
-					permutation_pp.set(t, permutation_pp.get(v));
-					permutation_pp.set(v, temp);
+        Individual LocalBest = individual;
 
-					Individual I_pp = new Individual(permutation_pp,0,false);
+        for (int t = 0; t < individual.sol.verticesDT.size(); t++) {
+                for (int v = 0; v < NbNodes ; v++) {
+                    permutation = new LinkedList<>(individual.sol.permutation);
+                    temp = permutation.get(t);
+                    permutation.set(t, permutation.get(v));
+                    permutation.set(v, temp);
 
-					if (I_pp.cost < I_pc.cost) {
-						I_pc = I_pp;
-					}
-				}
-				I_p = I_pc;
-			}
-			// End of Local Search
-			if (population.get(i).cost > I_p.cost) {
-				population.set(i, I_p);
-			}
-		}
-	}
+                    current = new Individual(permutation);
+
+                    if (current.cost < LocalBest.cost) {
+                        LocalBest = current;
+                    }
+                }
+                individual = LocalBest;
+        }
+
+        if (population.get(i).cost > individual.cost) {
+            population.set(i, individual);
+        }
+    }
+
+
+    /** </Local Search> **/
 
 }
