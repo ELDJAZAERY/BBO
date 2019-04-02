@@ -11,9 +11,8 @@ public class Best {
 	int NbIt;
 	int NbN;
 	int div;
-	Individual I;
+	Individual individual;
 	LinkedList<Vertex> verticesDT;
-	Graph tree;
 	int clones;
 	int nbev;
 	
@@ -34,9 +33,10 @@ public class Best {
 		t = (endTime_best - startTime) / 1000;
 		NbIt = i + 1;
 		div = 0;
-		I = newBest;
+        individual = newBest;
 		NbN = newBest.sol.verticesDT.size();
 		verticesDT = new LinkedList<>(newBest.sol.verticesDT);
+		nbev = newBest.eval;
 	}
 
     public void display(){
@@ -47,11 +47,13 @@ public class Best {
 	public String toString() {
 		String out = "";
 		out += "Best {";
-		out += "\n\t Fitness : " + cost;
-        out += "\n\t Nodes   : " + NbN;
-        out += "\n\t Iters   : " + NbIt;
-		out += "\n\t Secs    : " + t;
+		out += "\n\t Fitness    : " + cost;
+        out += "\n\t Nodes      : " + NbN;
+        out += "\n\t Iters      : " + NbIt;
+        out += "\n\t nb Sols    : " + nbev;
+		out += "\n\t Secs       : " + t;
 		out += "\n}";
 		return out;
 	}
+
 }

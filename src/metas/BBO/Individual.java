@@ -12,9 +12,7 @@ public class Individual implements Comparable , Cloneable {
 	static int nbEval = 0 ;
 
 	Solution sol;
-	float SpeciesCount;
 	float cost;
-
 	int eval;
 
 	public Individual(LinkedList<Integer> CurrentSol){

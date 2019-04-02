@@ -116,7 +116,7 @@ public class BBO {
 				best.div++;
 			}
 
-			if (best.div >= 3) {
+			if (best.div >= 10) {
 			    /** Diversification **/
 			    _Diversity(elitism);
 			}
@@ -131,14 +131,13 @@ public class BBO {
 
 	public void InitializePopulation() {
 		for (int i = 0; i < populationSize; i++) {
-			Individual In = new Individual();
-			population.add(In);
+			Individual ind = new Individual();
+			population.add(ind);
 
-			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.add(1 - (population.get(i).SpeciesCount / populationSize));
+			lambda.add( (float) 1. - ( (populationSize - i) / populationSize ) );
 			// mu(i) is the emigration rate for habitat i
-			mu.add( population.get(i).SpeciesCount / populationSize);
+			mu.add( (float) (populationSize - i) / populationSize);
 		}
         updateProb();
 	}
@@ -146,11 +145,10 @@ public class BBO {
 
 	public void UpdatePopulations() {
 		for (int i = 0; i < population.size(); i++) {
-			population.get(i).SpeciesCount = populationSize - i;
 			// lambda(i) is the immigration rate for habitat i
-			lambda.set(i, 1 - (population.get(i).SpeciesCount / populationSize));
+            lambda.set( i, (float) 1. - ( (populationSize - i) / populationSize ) );
 			// mu(i) is the emigration rate for habitat i
-			mu.set(i, population.get(i).SpeciesCount / populationSize);
+            mu.set(i, (float) (populationSize - i) / populationSize);
 		}
         updateProb();
 	}
@@ -160,25 +158,26 @@ public class BBO {
 
 	    prob.clear();
 
-        float sommeLT = 0;
-        float sommeMT = 0;
-        float sommeT ;
+        float sommeLambdaTotal = 0;
+        float sommeMuTotal = 0;
+        float somme ;
 
         for (int k = 0; k < populationSize; k++) {
-            sommeLT = sommeLT + lambda.get(k);
-            sommeMT = sommeMT + mu.get(k);
+            sommeLambdaTotal = sommeLambdaTotal + lambda.get(k);
+            sommeMuTotal = sommeMuTotal + mu.get(k);
         }
-        sommeT = sommeLT / sommeMT;
+        somme = sommeLambdaTotal / sommeMuTotal;
 
         for (int k = 0; k < populationSize; k++) {
-            prob.add((float) 1 / (1 + sommeT));
+            prob.add((1 / (1 + somme)));
         }
     }
 
 
+    HashMap<Integer, String> permutations;
     private void _Crossing(LinkedList<Integer> currentSolutions , int j){
 
-        HashMap<Integer, String> permutations = new HashMap<>();
+        permutations = new HashMap<>();
         for (int n = 0; n < currentSolutions.size(); n++) {
             permutations.put(currentSolutions.get(n), String.valueOf(n));
         }
@@ -204,7 +203,7 @@ public class BBO {
 
     private void _Mutation(LinkedList<Integer> currentSolutions , int j){
 
-        HashMap<Integer, String> permutations = new HashMap<>();
+        permutations = new HashMap<>();
         for (int n = 0; n < currentSolutions.size(); n++) {
             permutations.put(currentSolutions.get(n), String.valueOf(n));
         }
@@ -232,19 +231,20 @@ public class BBO {
 
 
     private void _Diversity(LinkedList<Individual> elitism){
-        System.out.println("Jumping Out");
+        System.out.println(" ---- @Diversification ----");
+
+        // Generate new Population
         for (int k = 0; k < populationSize; k++) {
             Individual I = new Individual();
             population.set(k, I);
         }
         best.div = 0;
 
-        // Replace the worst with the previous generation's ELITES.
+        // Elitism
         population.set(populationSize - 1, elitism.get(0));
         population.set(populationSize - 2, elitism.get(1));
-        population.set(populationSize - 3, best.I);
+        population.set(populationSize - 3, best.individual);
 
-        // Rank habitats
         Collections.sort(population);
     }
 
